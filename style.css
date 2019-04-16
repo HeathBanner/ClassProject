@@ -1,4 +1,32 @@
+
+.seatWarmer {
+    min-height: 38px;
+    min-width: 100%;
+    margin: 0px 10px;
+}
+
+.forecast {
+    width: 100%;
+}
+
+.previous-holder{
+    min-width: 100px;
+    min-height: 50px;
+    display: inline;
+}
+
+.next-holder {
+    min-width: 100px;
+    min-height: 50px;
+    display: inline;
+}
+
+#previous {
+    visibility: hidden;
+}
+=======
 #map {
     height: 400px;
     width: 500px;
 }
+

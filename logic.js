@@ -1,4 +1,102 @@
 
+var config = {
+    apiKey: "AIzaSyAJS4YQWU5DmESeYueG1qH1NGkjv3DncEY",
+    authDomain: "https://classwork-f3f0e.firebaseio.com/",
+    databaseURL: "https://classwork-f3f0e.firebaseio.com/",
+    storageBucket: "https://classwork-f3f0e.firebaseio.com/"
+};
+  
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
+//==================================================================//
+
+var moonList = []
+
+var weatherList = []
+
+var latitude;
+var longitude;
+
+var currentPage = 0
+
+//==================================================================//
+var chatLogCount = 0
+var chatLog = []
+var users = []
+
+
+if (localStorage.getItem('user')) {
+    $("#loginInput").val(localStorage.getItem('user'))
+}
+
+
+database.ref('chatLog').update({
+    logCount: 1,
+})
+
+
+$(document).ready($(document).on("click", "#submitLogin", function() {
+    login = $("#loginInput").val().trim()
+
+    localStorage.setItem('user', login)
+
+    database.ref('users').update({
+        [login]: true,
+    })
+
+    $("#loginInput").remove()
+    $("#submitLogin").remove()
+}))
+
+database.ref('users').on('child_added', function(data){
+
+        users.push(data.key)
+        console.log("USER IS" + data.key)
+})
+
+$(document).ready($(document).on("click", "#chatSubmit", function(){
+    input = $("#chatInput").val()
+    console.log(input)
+
+    database.ref('chatLog').once('value').then(function(snap) {
+        var children = snap.numChildren()
+        database.ref('chatLogIndex').update({
+            logCount: children
+        })
+
+        database.ref('chatLog').update({
+            [children]: localStorage.getItem('user') + ": " + input
+        })
+    })
+}));
+
+
+database.ref('chatLog').on('child_added', function(data) {
+
+
+    database.ref('chatLog').once('value').then(function(snap){
+        children = snap.numChildren()
+        console.log(children)
+
+        if(children <= 6) {
+            for (var i = children; i > 0; i--) {
+                $('#chat' + i).text(snap.child(i).val())
+                console.log(snap.child(i).val())
+            }
+        }else if (children > 6) {
+            chatIndex = 6
+
+            for (var i = children; i >= children - 6; i--) {
+                $('#chat' + chatIndex).text(snap.child(i).val())
+                console.log(snap.child(i).val())
+                chatIndex--
+            }
+        }
+    })
+})
+
 
 // APP ID
 // DxBU79ocPu6mVtMHuij8
@@ -7,61 +105,235 @@
 // IJhvDA9iMZjliA8otkgGag
 
 
-
-$(document).ready($(document).on("click", "#forecastSubmit", function(){
+$(document).ready($(document).on("click", "#current-location", function(){
     event.preventDefault()
+    
+    navigator.geolocation.getCurrentPosition(function(data) {
+        latitude = data.coords.latitude
+        longitude = data.coords.longitude;
+    
+        console.log("click")
 
-    console.log("click")
-
-    loc = $("#forecastInput").val()
-
-
-// Moon Phase Call
-    $.ajax({
-        url: "https://weather.api.here.com/weather/1.0/report.json?app_id=DxBU79ocPu6mVtMHuij8&app_code=IJhvDA9iMZjliA8otkgGag&product=forecast_astronomy&name=Charlotte&jsoncallback=myCallbackFunction",
-        method: "GET",
-        dataType: "jsonp",
-        // jsonp: "jsonp",
-        jsonpCallback: 'myCallbackFunction',
-        crossDomain: true,
-    }).then(function myCallbackFunction(response) {
-        
-        console.log("before for")
-        for(var i = 0; i < 4; i++) {
-            var astroForecastDesc = $('<h1 id="' + i + '" class="remove">' + response.astronomy.astronomy[i].moonPhaseDesc + '</h1>')
-            $("#forecastTarget" + i).append(astroForecastDesc);
-
-            // var astroForecastIcon = $('<img src="https://weather.api.here.com/static/weather/icon/' + response.astronomy.astronomy[i].iconName + '.png" class="remove">')
-            // $("#forecastTarget").append(astroForecastIcon)
+        // Moon Phase Call
+        $.ajax({
+            url: "https://weather.api.here.com/weather/1.0/report.json?app_id=DxBU79ocPu6mVtMHuij8&app_code=IJhvDA9iMZjliA8otkgGag&product=forecast_astronomy&latitude=" + latitude + "&longitude=" + longitude + "&jsoncallback=myCallbackFunction",
+            method: "GET",
+            dataType: "jsonp",
+            // jsonp: "jsonp",
+            jsonpCallback: 'myCallbackFunction',
+            crossDomain: true,
+        }).then(function myCallbackFunction(response) {
             
-            var visibility = $('<h4 id="' + i + '" class="remove">' + response.astronomy.astronomy[i].moonPhase + '</h4>')
-            $("#forecastTarget" + i).append(visibility)
+            console.log("before for")
 
-            var sunrise = $('<h3 id="' + i + '" class="remove">' + response.astronomy.astronomy[i].sunrise + '</h3>')
-            $("#forecastTarget" + i).append(sunrise);
+            for(var i = 0; i < 5; i++) {
+                var description;
+                description = response.astronomy.astronomy[i].moonPhaseDesc
+                description = description.split(' ')
+                console.log(description)
 
-            var moonrise = $('<h3 id="' + i + '" class="remove">' + response.astronomy.astronomy[i].moonrise + '</h3>')
-            $("#forecastTarget" + i).append(moonrise)
+                description[1] = description[1].charAt(0).toUpperCase() + description[1].slice(1)
+                console.log(description)
 
-            var sunset = $('<h3 id="' + i + '" class="remove">' + response.astronomy.astronomy[i].sunset + '</h3>')
-            $("#forecastTarget" + i).append(sunset)
+                description = description.join(' ')
+                console.log(description)
 
-            var moonset = $('<h3 id="' + i + '" class="remove">' + response.astronomy.astronomy[i].moonset + '</h3>')
-            $("#forecastTarget" + i).append(moonset)
 
-            
-            console.log("fire!")
-        }
+                var astroForecastDesc = '<h1 id="' + i + '" class="remove">' + description + '</h1>'
+
+                // var astroForecastIcon = $('<img src="https://weather.api.here.com/static/weather/icon/' + response.astronomy.astronomy[i].iconName + '.png" class="remove">')
+                // $("#moonTarget").append(astroForecastIcon)
+
+                var visibilityFloat = 0
+                visibilityFloat = parseInt(response.astronomy.astronomy[i].moonPhase * 100)
+                console.log(visibilityFloat)
+                if(visibilityFloat[0] == '-') {
+                    visibilityFloat = parseInt(visibilityFloat) * -1
+                    console.log(visibilityFloat)
+                }
+                
+                var visibility = '<h4 id="' + i + '" class="remove">Visibility: ' + visibilityFloat + '%</h4>'
+
+                var sunrise = '<h3 id="' + i + '" class="remove">Sunrise: ' + response.astronomy.astronomy[i].sunrise + '</h3>'
+
+                var moonrise = '<h3 id="' + i + '" class="remove">Moonrise: ' + response.astronomy.astronomy[i].moonrise + '</h3>'
+
+                var sunset = '<h3 id="' + i + '" class="remove">Sunset: ' + response.astronomy.astronomy[i].sunset + '</h3>'
+
+                var moonset = '<h3 id="' + i + '" class="remove">Moonset: ' + response.astronomy.astronomy[i].moonset + '</h3>'
+
+                moonList[i] = {
+                    astroForecastDesc: astroForecastDesc,
+                    visibility: visibility,
+                    sunrise: sunrise,
+                    sunset: sunset,
+                    moonrise: moonrise,
+                    moonset: moonset,
+                }
+                // THE VARIABLES ARE SAVING THE TIME AS AN INTEGER AND THE AM/PM AS STRING.
+
+                
+                console.log("fire!")
+            }
+            console.log("MOON LIST TEST")
+            console.log(moonList[0])
+            $("#moon-target").append(moonList[0].astroForecastDesc)
+            $("#moon-target").append(moonList[0].visibility)
+            $("#moon-target").append(moonList[0].sunrise)
+            $("#moon-target").append(moonList[0].sunset)
+            $("#moon-target").append(moonList[0].moonrise)
+            $("#moon-target").append(moonList[0].moonset)
+
+        })
+
+        // Weather Call
+
+        $.ajax({
+            url: 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&APPID=4216d1350fe31af9bf5100bb34fa72e2',
+            method: "GET",
+        }).then(function(response){
+            divCount = 0
+            var weatherIndex = 0
+            //Add icon
+
+            for (var i = 0; i < response.list.length; i++) {
+                console.log("hit! FOR LOOP")
+                date = response.list[i].dt_txt
+                console.log(date)
+                date = date.split(' ')
+
+                dateReverse = date[0]
+                dateReverse = dateReverse.split('-')
+
+                var dateInput = []
+
+                dateInput.push(dateReverse[1])
+                dateInput.push(dateReverse[2])
+                dateInput.push(dateReverse[0])
+
+                dateInput = dateInput.join('/')
+
+                if(date[1] == '21:00:00') {
+                    
+                    console.log("hit IF")
+                    var description;
+                    description = response.list[i].weather[0].description
+                    description = description.split(' ')
+                    console.log(description)
+                    for (var j = 0; j < description.length; j++) {
+                        description[j] = description[j].charAt(0).toUpperCase() + description[j].slice(1)
+                        console.log(description)
+                    }
+                    description = description.join(' ')
+                    console.log(description)
+
+
+                    var weatherDesc = '<h3 id="' + i + '" class="remove">' + description  + '</h3>'
+
+                    var icon = '<img src="https://openweathermap.org/img/w/' + response.list[i].weather[0].icon + '.png" class="remove">'
+
+                    var humidity = '<h4 class="remove">Humidity: ' + response.list[i].main.humidity + '%</h4>'
+
+                    windSpeed = parseInt(response.list[i].wind.speed * 2.237)
+
+                    var wind = '<h4 class="remove">Wind: ' + windSpeed + ' Miles Per Hour</h4>'
+
+                    weatherList[weatherIndex] = {
+                        weatherDesc: weatherDesc,
+                        icon: icon,
+                        humidity: humidity,
+                        wind: wind,
+                        date: dateInput,
+                    }
+                    weatherIndex++
+
+                    console.log("hit END IF")
+                }else {
+                    console.log("miss!")
+                }
+
+            }
+                $("#weather-target").append(weatherList[0].weatherDesc)
+                $("#weather-target").append(weatherList[0].icon)
+                $("#weather-target").append(weatherList[0].humidity)
+                $("#weather-target").append(weatherList[0].wind)
+
+                $(".next-holder").append('<button id="next">Next</button>')
+                $(".previous-holder").append('<button id="previous">Previous</button>') 
+                $("#page-index").text(weatherList[0].date)       
+
+        })
+       
+
     })
 
-// Weather Call
+}))
 
-    // $.ajax({
-    //     url: 'https://api.openweathermap.org/data/2.5/weather?q=' + loc + '&APPID=4216d1350fe31af9bf5100bb34fa72e2',
-    //     method: "GET",
-    // }).then(function(response){
+$(document).ready($(document).on("click", "#next", function(){
+    $(".remove").remove()
+
+    currentPage++
+
+
+    if(currentPage <= 4) {
+
+        $("#moon-target").append(moonList[currentPage].astroForecastDesc)
+        $("#moon-target").append(moonList[currentPage].visibility)
+        $("#moon-target").append(moonList[currentPage].sunrise)
+        $("#moon-target").append(moonList[currentPage].sunset)
+        $("#moon-target").append(moonList[currentPage].moonrise)
+        $("#moon-target").append(moonList[currentPage].moonset)
+
+        $("#weather-target").append(weatherList[currentPage].weatherDesc)
+        $("#weather-target").append(weatherList[currentPage].icon)
+        $("#weather-target").append(weatherList[currentPage].humidity)
+        $("#weather-target").append(weatherList[currentPage].wind)
+
+        $("#page-index").text(weatherList[currentPage].date)
+    }
+    if(currentPage == 4){
+        $("#next").css({
+            visibility: 'hidden',
+        })
+    }else if(currentPage > 0) {
+        $("#previous").css({
+            visibility: 'visible',
+        })
+    }
+}))
+
+$(document).ready($(document).on("click", "#previous", function(){
+    $(".remove").remove()
+
+    currentPage--
+
+    if(currentPage >= 0) {
+
+        $("#moon-target").append(moonList[currentPage].astroForecastDesc)
+        $("#moon-target").append(moonList[currentPage].visibility)
+        $("#moon-target").append(moonList[currentPage].sunrise)
+        $("#moon-target").append(moonList[currentPage].sunset)
+        $("#moon-target").append(moonList[currentPage].moonrise)
+        $("#moon-target").append(moonList[currentPage].moonset)
+
+        $("#weather-target").append(weatherList[currentPage].weatherDesc)
+        $("#weather-target").append(weatherList[currentPage].icon)
+        $("#weather-target").append(weatherList[currentPage].humidity)
+        $("#weather-target").append(weatherList[currentPage].wind)
         
-    //     //Add icon
+        $("#page-index").text(weatherList[currentPage].date)
+
+    }
+    if(currentPage == 0){
+        $("#previous").css({
+            visibility: 'hidden',
+        })
+        currentPage = 0
+    } else if(currentPage < 4) {
+        $("#next").css({
+            visibility: 'visible',
+        })
+    }
 
     //     var weatherDesc = $('<h3 id="' + i + '" class="remove">' + response.list)
     // })
@@ -103,4 +375,5 @@ $(document).ready($(document).on("click", "#forecastSubmit", function(){
             
 
     
+
 }))
