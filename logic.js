@@ -36,6 +36,17 @@ database.ref('chatLog').update({
     logCount: 1,
 })
 
+// function apod(){
+//     $.ajax({
+//         url: 'https://api.nasa.gov/planetary/apod?api_key=NNKOjkoul8n1CH18TWA9gwngW1s1SmjESPjNoUFo',
+//         method: "GET",
+//     }).then(function(response){
+
+//         $("#test").append('<img src="' + result.url + '"')
+//     })
+// }
+
+// apod()
 
 $(document).ready($(document).on("click", "#submitLogin", function() {
     login = $("#loginInput").val().trim()
@@ -126,7 +137,6 @@ $(document).ready($(document).on("click", "#current-location", function(){
             
             console.log("before for")
 
-
             for(var i = 0; i < 5; i++) {
                 var description;
                 description = response.astronomy.astronomy[i].moonPhaseDesc
@@ -136,10 +146,8 @@ $(document).ready($(document).on("click", "#current-location", function(){
                 description[1] = description[1].charAt(0).toUpperCase() + description[1].slice(1)
                 console.log(description)
 
-
                 description = description.join(' ')
                 console.log(description)
-
 
                 var astroForecastDesc = '<h1 id="' + i + '" class="remove">' + description + '</h1>'
 
@@ -265,6 +273,8 @@ $(document).ready($(document).on("click", "#current-location", function(){
                 $("#page-index").text(weatherList[0].date)       
 
         })
+
+        
        
 
     })
