@@ -76,6 +76,7 @@ $(document).ready($(document).on("click", "#forecastSubmit", function(){
         });
         setTimeout(setISS, 5000)
     }
+
             var map = L.map('map', { zoomControl:false }).setView([0, 0], 2);
             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibGFyYS1lIiwiYSI6ImNqdWlscnl2YjE4a2Y0NHBpb21mZ2lsdmQifQ.bHWgEb4G4BLPbjEMAcEwTA', {
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -93,8 +94,13 @@ $(document).ready($(document).on("click", "#forecastSubmit", function(){
             });
             var iss = L.marker([0, 0], { icon: issIcon }).addTo(map);
 
-
             setISS();
+
+            // we can use this for the label once I know which id to append to 
+            // var mapText = $("<p>");
+            // mapText.html("Current Location of the International Space Station");
+            // $("").append(mapText);
+            
 
     
 }))
