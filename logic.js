@@ -5,7 +5,7 @@ var config = {
     databaseURL: "https://classwork-f3f0e.firebaseio.com/",
     storageBucket: "https://classwork-f3f0e.firebaseio.com/"
 };
-  
+
 firebase.initializeApp(config);
 
 var database = firebase.database();
@@ -16,7 +16,7 @@ var moonList = []
 
 var weatherList = []
 
-var latitude;
+var currentLatitude;
 var longitude;
 
 var currentPage = 0
@@ -48,7 +48,7 @@ database.ref('chatLog').update({
 
 // apod()
 
-$(document).ready($(document).on("click", "#submitLogin", function() {
+$(document).ready($(document).on("click", "#submitLogin", function () {
     login = $("#loginInput").val().trim()
 
     localStorage.setItem('user', login)
@@ -61,17 +61,17 @@ $(document).ready($(document).on("click", "#submitLogin", function() {
     $("#submitLogin").remove()
 }))
 
-database.ref('users').on('child_added', function(data){
+database.ref('users').on('child_added', function (data) {
 
-        users.push(data.key)
-        console.log("USER IS" + data.key)
+    users.push(data.key)
+    console.log("USER IS" + data.key)
 })
 
-$(document).ready($(document).on("click", "#chatSubmit", function(){
+$(document).ready($(document).on("click", "#chatSubmit", function () {
     input = $("#chatInput").val()
     console.log(input)
 
-    database.ref('chatLog').once('value').then(function(snap) {
+    database.ref('chatLog').once('value').then(function (snap) {
         var children = snap.numChildren()
         database.ref('chatLogIndex').update({
             logCount: children
@@ -84,19 +84,19 @@ $(document).ready($(document).on("click", "#chatSubmit", function(){
 }));
 
 
-database.ref('chatLog').on('child_added', function(data) {
+database.ref('chatLog').on('child_added', function (data) {
 
 
-    database.ref('chatLog').once('value').then(function(snap){
+    database.ref('chatLog').once('value').then(function (snap) {
         children = snap.numChildren()
         console.log(children)
 
-        if(children <= 6) {
+        if (children <= 6) {
             for (var i = children; i > 0; i--) {
                 $('#chat' + i).text(snap.child(i).val())
                 console.log(snap.child(i).val())
             }
-        }else if (children > 6) {
+        } else if (children > 6) {
             chatIndex = 6
 
             for (var i = children; i >= children - 6; i--) {
@@ -116,25 +116,27 @@ database.ref('chatLog').on('child_added', function(data) {
 // IJhvDA9iMZjliA8otkgGag
 
 
-$(document).ready($(document).on("click", "#current-location", function(){
+$(document).ready($(document).on("click", "#current-location", function () {
     event.preventDefault()
-    
-    navigator.geolocation.getCurrentPosition(function(data) {
-        latitude = data.coords.latitude
+
+
+
+    navigator.geolocation.getCurrentPosition(function (data) {
+        currentLatitude = data.coords.latitude
         longitude = data.coords.longitude;
-    
+
         console.log("click")
 
         // Moon Phase Call
         $.ajax({
-            url: "https://weather.api.here.com/weather/1.0/report.json?app_id=DxBU79ocPu6mVtMHuij8&app_code=IJhvDA9iMZjliA8otkgGag&product=forecast_astronomy&latitude=" + latitude + "&longitude=" + longitude + "&jsoncallback=myCallbackFunction",
+            url: "https://weather.api.here.com/weather/1.0/report.json?app_id=DxBU79ocPu6mVtMHuij8&app_code=IJhvDA9iMZjliA8otkgGag&product=forecast_astronomy&latitude=" + currentLatitude + "&longitude=" + longitude + "&jsoncallback=myCallbackFunction",
             method: "GET",
             dataType: "jsonp",
             // jsonp: "jsonp",
             jsonpCallback: 'myCallbackFunction',
             crossDomain: true,
         }).then(function myCallbackFunction(response) {
-            
+
             console.log("before for")
 
             for(var i = 0; i < 5; i++) {
@@ -157,11 +159,11 @@ $(document).ready($(document).on("click", "#current-location", function(){
                 var visibilityFloat = 0
                 visibilityFloat = parseInt(response.astronomy.astronomy[i].moonPhase * 100)
                 console.log(visibilityFloat)
-                if(visibilityFloat[0] == '-') {
+                if (visibilityFloat[0] == '-') {
                     visibilityFloat = parseInt(visibilityFloat) * -1
                     console.log(visibilityFloat)
                 }
-                
+
                 var visibility = '<h4 id="' + i + '" class="remove">Visibility: ' + visibilityFloat + '%</h4>'
 
                 var sunrise = '<h3 id="' + i + '" class="remove">Sunrise: ' + response.astronomy.astronomy[i].sunrise + '</h3>'
@@ -182,7 +184,7 @@ $(document).ready($(document).on("click", "#current-location", function(){
                 }
                 // THE VARIABLES ARE SAVING THE TIME AS AN INTEGER AND THE AM/PM AS STRING.
 
-                
+
                 console.log("fire!")
             }
             console.log("MOON LIST TEST")
@@ -199,9 +201,9 @@ $(document).ready($(document).on("click", "#current-location", function(){
         // Weather Call
 
         $.ajax({
-            url: 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&APPID=4216d1350fe31af9bf5100bb34fa72e2',
+            url: 'https://api.openweathermap.org/data/2.5/forecast?lat=' + currentLatitude + '&lon=' + longitude + '&APPID=4216d1350fe31af9bf5100bb34fa72e2',
             method: "GET",
-        }).then(function(response){
+        }).then(function (response) {
             divCount = 0
             var weatherIndex = 0
             //Add icon
@@ -223,8 +225,8 @@ $(document).ready($(document).on("click", "#current-location", function(){
 
                 dateInput = dateInput.join('/')
 
-                if(date[1] == '21:00:00') {
-                    
+                if (date[1] == '21:00:00') {
+
                     console.log("hit IF")
                     var description;
                     description = response.list[i].weather[0].description
@@ -238,7 +240,7 @@ $(document).ready($(document).on("click", "#current-location", function(){
                     console.log(description)
 
 
-                    var weatherDesc = '<h3 id="' + i + '" class="remove">' + description  + '</h3>'
+                    var weatherDesc = '<h3 id="' + i + '" class="remove">' + description + '</h3>'
 
                     var icon = '<img src="https://openweathermap.org/img/w/' + response.list[i].weather[0].icon + '.png" class="remove">'
 
@@ -258,36 +260,83 @@ $(document).ready($(document).on("click", "#current-location", function(){
                     weatherIndex++
 
                     console.log("hit END IF")
-                }else {
+                } else {
                     console.log("miss!")
                 }
 
             }
-                $("#weather-target").append(weatherList[0].weatherDesc)
-                $("#weather-target").append(weatherList[0].icon)
-                $("#weather-target").append(weatherList[0].humidity)
-                $("#weather-target").append(weatherList[0].wind)
+            $("#weather-target").append(weatherList[0].weatherDesc)
+            $("#weather-target").append(weatherList[0].icon)
+            $("#weather-target").append(weatherList[0].humidity)
+            $("#weather-target").append(weatherList[0].wind)
 
-                $(".next-holder").append('<button id="next">Next</button>')
-                $(".previous-holder").append('<button id="previous">Previous</button>') 
-                $("#page-index").text(weatherList[0].date)       
+            $(".next-holder").append('<button id="next">Next</button>')
+            $(".previous-holder").append('<button id="previous">Previous</button>')
+            $("#page-index").text(weatherList[0].date)
 
         })
+<<<<<<< HEAD
 
         
        
 
+=======
+>>>>>>> 701e2e783064a7655f8a388b378a2e591801d474
     })
+
+    function setISS() {
+        $.getJSON('https://api.wheretheiss.at/v1/satellites/25544', function (data) {
+            var issLat = data['latitude'];
+            var issLon = data['longitude'];
+            iss.setLatLng([issLat, issLon]);
+            map.panTo([issLat, issLon], animate = true);
+            console.log(issLat)
+            console.log(issLon)
+        });
+        setTimeout(setISS, 5000)
+    }
+    var map = L.map('map', { zoomControl: false }).setView([0, 0], 2);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibGFyYS1lIiwiYSI6ImNqdWlscnl2YjE4a2Y0NHBpb21mZ2lsdmQifQ.bHWgEb4G4BLPbjEMAcEwTA', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.satellite',
+        accessToken: 'pk.eyJ1IjoibGFyYS1lIiwiYSI6ImNqdWlscnl2YjE4a2Y0NHBpb21mZ2lsdmQifQ.bHWgEb4G4BLPbjEMAcEwTA'
+    }).addTo(map);
+
+    var issIcon = L.icon({
+        iconUrl: 'imgs/ISSIcon.png',
+
+        iconSize: [38, 95], // size of the icon
+
+        iconAnchor: [25, 40], // point of the icon which will correspond to marker's location
+    });
+    var iss = L.marker([0, 0], { icon: issIcon }).addTo(map);
+
+
+    setISS();
+
+    $.getJSON('https://www.n2yo.com/rest/v1/satellite/visualpasses/25544/35.227085/-80.843124/0/10/60/&apiKey=V8E8EU-AUXGFV-KZ28S2-3ZJ0', function (data) {
+        var passLocation = $("<h3>").text("Over the next 10 days The International Space Station will be viewable from your location at the following times:")
+        $("#pass-info").append(passLocation);
+        $("#pass-info").append("<br>")
+
+        data['passes'].forEach(function (pass) {
+            var timeStamp = pass['startUTC'];
+            var passTime = moment.unix(timeStamp).format('dddd, MMMM Do YYYY, h:mm A');
+            $("#pass-info").append("<li>" + passTime + " for a duration of " + pass['duration'] + " seconds, starting in the " + pass['startAzCompass'] + " and moving toward " + pass['endAzCompass'] + "</li>")
+        });
+    });
+
 
 }))
 
-$(document).ready($(document).on("click", "#next", function(){
+$(document).ready($(document).on("click", "#next", function () {
     $(".remove").remove()
 
     currentPage++
 
 
-    if(currentPage <= 4) {
+    if (currentPage <= 4) {
 
         $("#moon-target").append(moonList[currentPage].astroForecastDesc)
         $("#moon-target").append(moonList[currentPage].visibility)
@@ -303,23 +352,23 @@ $(document).ready($(document).on("click", "#next", function(){
 
         $("#page-index").text(weatherList[currentPage].date)
     }
-    if(currentPage == 4){
+    if (currentPage == 4) {
         $("#next").css({
             visibility: 'hidden',
         })
-    }else if(currentPage > 0) {
+    } else if (currentPage > 0) {
         $("#previous").css({
             visibility: 'visible',
         })
     }
 }))
 
-$(document).ready($(document).on("click", "#previous", function(){
+$(document).ready($(document).on("click", "#previous", function () {
     $(".remove").remove()
 
     currentPage--
 
-    if(currentPage >= 0) {
+    if (currentPage >= 0) {
 
         $("#moon-target").append(moonList[currentPage].astroForecastDesc)
         $("#moon-target").append(moonList[currentPage].visibility)
@@ -332,16 +381,16 @@ $(document).ready($(document).on("click", "#previous", function(){
         $("#weather-target").append(weatherList[currentPage].icon)
         $("#weather-target").append(weatherList[currentPage].humidity)
         $("#weather-target").append(weatherList[currentPage].wind)
-        
+
         $("#page-index").text(weatherList[currentPage].date)
 
     }
-    if(currentPage == 0){
+    if (currentPage == 0) {
         $("#previous").css({
             visibility: 'hidden',
         })
         currentPage = 0
-    } else if(currentPage < 4) {
+    } else if (currentPage < 4) {
         $("#next").css({
             visibility: 'visible',
         })
@@ -349,43 +398,8 @@ $(document).ready($(document).on("click", "#previous", function(){
 
     //     var weatherDesc = $('<h3 id="' + i + '" class="remove">' + response.list)
     // })
-    function setISS() {
-        $.getJSON('https://api.wheretheiss.at/v1/satellites/25544', function (data) {
-            var issLat = data['latitude'];
-            var issLon = data['longitude'];
-            iss.setLatLng([issLat, issLon]);
-            map.panTo([issLat, issLon], animate=true);
-            console.log(issLat)
-            console.log(issLon)
-        });
-        setTimeout(setISS, 5000)
-    }
 
-            var map = L.map('map', { zoomControl:false }).setView([0, 0], 2);
-            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibGFyYS1lIiwiYSI6ImNqdWlscnl2YjE4a2Y0NHBpb21mZ2lsdmQifQ.bHWgEb4G4BLPbjEMAcEwTA', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                maxZoom: 18,
-                id: 'mapbox.satellite',
-                accessToken: 'pk.eyJ1IjoibGFyYS1lIiwiYSI6ImNqdWlscnl2YjE4a2Y0NHBpb21mZ2lsdmQifQ.bHWgEb4G4BLPbjEMAcEwTA'
-            }).addTo(map);
 
-            var issIcon = L.icon({
-                iconUrl: 'imgs/ISSIcon.png',
 
-                iconSize: [38, 95], // size of the icon
-
-                iconAnchor: [25, 40], // point of the icon which will correspond to marker's location
-            });
-            var iss = L.marker([0, 0], { icon: issIcon }).addTo(map);
-
-            setISS();
-
-            // we can use this for the label once I know which id to append to 
-            // var mapText = $("<p>");
-            // mapText.html("Current Location of the International Space Station");
-            // $("").append(mapText);
-            
-
-    
 
 }))
