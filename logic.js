@@ -65,5 +65,42 @@ $(document).ready($(document).on("click", "#forecastSubmit", function(){
 
     //     var weatherDesc = $('<h3 id="' + i + '" class="remove">' + response.list)
     // })
+    function setISS() {
+        $.getJSON('https://api.wheretheiss.at/v1/satellites/25544', function (data) {
+            var issLat = data['latitude'];
+            var issLon = data['longitude'];
+            iss.setLatLng([issLat, issLon]);
+            map.panTo([issLat, issLon], animate=true);
+            console.log(issLat)
+            console.log(issLon)
+        });
+        setTimeout(setISS, 5000)
+    }
 
+            var map = L.map('map', { zoomControl:false }).setView([0, 0], 2);
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibGFyYS1lIiwiYSI6ImNqdWlscnl2YjE4a2Y0NHBpb21mZ2lsdmQifQ.bHWgEb4G4BLPbjEMAcEwTA', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox.satellite',
+                accessToken: 'pk.eyJ1IjoibGFyYS1lIiwiYSI6ImNqdWlscnl2YjE4a2Y0NHBpb21mZ2lsdmQifQ.bHWgEb4G4BLPbjEMAcEwTA'
+            }).addTo(map);
+
+            var issIcon = L.icon({
+                iconUrl: 'imgs/ISSIcon.png',
+
+                iconSize: [38, 95], // size of the icon
+
+                iconAnchor: [25, 40], // point of the icon which will correspond to marker's location
+            });
+            var iss = L.marker([0, 0], { icon: issIcon }).addTo(map);
+
+            setISS();
+
+            // we can use this for the label once I know which id to append to 
+            // var mapText = $("<p>");
+            // mapText.html("Current Location of the International Space Station");
+            // $("").append(mapText);
+            
+
+    
 }))
