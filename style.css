@@ -1,3 +1,4 @@
+
 .seatWarmer {
     min-height: 38px;
     min-width: 100%;
@@ -23,3 +24,9 @@
 #previous {
     visibility: hidden;
 }
+=======
+#map {
+    height: 400px;
+    width: 500px;
+}
+
