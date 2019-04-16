@@ -8,12 +8,12 @@
 
 
 
-$(document).ready($(document).on("click", "#forecastSubmit", function(){
+$(document).ready($("#current-location").on("click", function(){
     event.preventDefault()
 
-    console.log("click")
+    // console.log("click")
 
-    loc = $("#forecastInput").val()
+    // loc = $("#forecastInput").val()
 
 
 // Moon Phase Call
