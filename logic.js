@@ -126,6 +126,7 @@ $(document).ready($(document).on("click", "#current-location", function(){
             
             console.log("before for")
 
+
             for(var i = 0; i < 5; i++) {
                 var description;
                 description = response.astronomy.astronomy[i].moonPhaseDesc
@@ -134,6 +135,7 @@ $(document).ready($(document).on("click", "#current-location", function(){
 
                 description[1] = description[1].charAt(0).toUpperCase() + description[1].slice(1)
                 console.log(description)
+
 
                 description = description.join(' ')
                 console.log(description)
