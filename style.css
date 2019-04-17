@@ -1,53 +1,93 @@
-<<<<<<< HEAD
+body {
+    background-color: black;
+    opacity: 1;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+}
 
+.colp {
+    padding: 0px;
+}
 
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+}
 
-nav {
+.top { 
+    background: url("assets/banner.png") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: contain;
+  }
+
+.navbar {
+    padding: 20px;
+}
+
+.chat-bg {
     background: white;
 }
 
-  
+#chatDiv {
+    /* display: none; */
+    text-align: center;
+    border: 2px solid maroon;
+}
 
-#chatbox {
-    position: absolute;
-    top: 100px;
-    right: 40px; 
+.seatWarmer {
+    display: block;
+    min-height: 35px;
+    min-width: 250px;
+}
+
+#chatInputDiv {
+    border-top: solid 2px black;
+    padding: 10px 0px;
+}
+
+#chatInput {
+    width: 83.5%;
+}
+
+#chatSubmit {
+    width: 13.5%;
+    text-align: center;
+    /* visibility: hidden; */
 }
 
 .clear-moon {
     background: #666;
+    padding: 30px;
+    border: solid 2px maroon;
+}
+
+
+#moon-body {
+    line-height: 1.5em; 
 }
 
 #apod {
     text-align: center;
-=======
-.top { 
-    background: url("banner.png") no-repeat center center; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: contain;
-  }
-  
-#chatbox {
-    position: absolute;
-    top: 100px;
-    right: 40px;
->>>>>>> 62bf637dd43cac85e5ec591b372eda2c662c46c2
 }
 
-.top { 
-    background: url("banner.png") no-repeat center center; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: contain;
-  }
   
 #chatbox {
     position: absolute;
     top: 100px;
     right: 40px;
+}
+
+  
+#chatbox {
+    position: absolute;
+    top: 100px;
+    right: 40px;
+}
+
+#apod-header {
+    background: #666;
+    padding: 10px 0px;
 }
 
 #apod-image {
@@ -55,10 +95,16 @@ nav {
     height: 100%;
 }
 
+#apodDesc {
+    display: none;
+}
+
 .formStyle {
+    margin: 80px 0px 30px 0px;
     text-align: center;
     display: inline;
-    background: #777;
+    background-image: url(imgs/prism.png);
+    border: 2px solid indigo;
 }  
 
 #city-input {
@@ -77,41 +123,41 @@ nav {
     margin: 20px;
 }
 
+#moon-target {
+    background: #666;;
+    color: black;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid maroon;
+    border-radius: 5px;
+}
+
+#weather-target{
+    background: white;
+    color: black;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid maroon;
+    border-radius: 5px;
+}
 
 
 .invis {
     display: none;
 }
 
-<<<<<<< HEAD
-.top { 
-    background: url("assets/banner.png") no-repeat center center; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: contain;
-  }
 
-=======
->>>>>>> 62bf637dd43cac85e5ec591b372eda2c662c46c2
-body {
-    padding: 30px;
-    background-color: black;
-    opacity: 1;
-    color: white;
-    font-family: 'Orbitron', sans-serif;
-}
+
 
 
 #cardWeather {
     color:  #350e60;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> f948e5960f9bc48e0e89e7e3553a0d05f88df247
 hr {
 color: white;
 border-width: thick;
@@ -123,19 +169,41 @@ position: absolute;
 padding: 40px;
 }
 
-#next {
-    visibility: hidden;
+
+
+
+.holder {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    min-width: 250px;
+    padding: 20px;
 }
 
-=======
->>>>>>> 62bf637dd43cac85e5ec591b372eda2c662c46c2
-@media screen and (max-width: 800px) {
+#previous {
+    display: inline;
+    margin: 0px 10px;
+}
+
+#next {
+    /* visibility: hidden; */
+    display: inline;
+    margin: 0px 10px;
+}
+
+/* @media screen and (max-width: 800px) {
 .top {
     background: url("banner.png") no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
 }
+} */
+
+#map {
+    height: 400px;
+    width: 500px;
 }
 
 #copyright {

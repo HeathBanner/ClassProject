@@ -11,14 +11,23 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
+
+//Forecast Storage
 var moonList = []
 var weatherList = []
+
+//Coordinates
 var latitude;
 var longitude;
+
+//Scrolling Forecast
 var currentPage = 0
 var chatLogCount = 0
+
+//Chat Box
 var chatLog = []
 var users = []
+
 
 if (localStorage.getItem('user')) {
     $("#loginInput").val(localStorage.getItem('user'));
@@ -30,13 +39,24 @@ database.ref('chatLog').update({
 function getAPOD() {
     $.getJSON('https://api.nasa.gov/planetary/apod?api_key=O4apkZjxNa6ai9nraTM6Ya5gyCAxuqMrZWupmr9D ', function (data) {
         console.log(data)
-        $("#apod").append("<img id='apod-image'>");
-        $("#apod-image").attr("src", data.url)
-        $("#apod").append("<p>" + data.explanation + "<p>")
+        var apodImg = $('<img id="apod-image">')
+        apodImg.attr("src", data.url)
+        
+        var apodDesc = $('<p id="apodDesc"></p>')
+        apodDesc.text(data.explanation)
+
+        var apodBtn = $('<button id="apodDescBtn">More Info</button>')
+        $("#apod").append(apodImg)
+        $("#apod").append(apodBtn)
+        $("#apod").append(apodDesc)
     });
 };
 
 getAPOD();
+
+$(document).ready($(document).on("click", "#apodDescBtn", function() {
+   $("#apodDesc").toggle()
+}))
 
 function setISS() {
     $.getJSON('https://api.wheretheiss.at/v1/satellites/25544', function (data) {
@@ -48,25 +68,25 @@ function setISS() {
     setTimeout(setISS, 5000);
 };
 
-function renderMap() {
-    var map = L.map('map', { zoomControl: false }).setView([0, 0], 2);
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibGFyYS1lIiwiYSI6ImNqdWlscnl2YjE4a2Y0NHBpb21mZ2lsdmQifQ.bHWgEb4G4BLPbjEMAcEwTA', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.satellite',
-        accessToken: 'pk.eyJ1IjoibGFyYS1lIiwiYSI6ImNqdWlscnl2YjE4a2Y0NHBpb21mZ2lsdmQifQ.bHWgEb4G4BLPbjEMAcEwTA'
-    }).addTo(map);
+// function renderMap() {
+//     var map = L.map('map', { zoomControl: false }).setView([0, 0], 2);
+//     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibGFyYS1lIiwiYSI6ImNqdWlscnl2YjE4a2Y0NHBpb21mZ2lsdmQifQ.bHWgEb4G4BLPbjEMAcEwTA', {
+//         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+//         maxZoom: 18,
+//         id: 'mapbox.satellite',
+//         accessToken: 'pk.eyJ1IjoibGFyYS1lIiwiYSI6ImNqdWlscnl2YjE4a2Y0NHBpb21mZ2lsdmQifQ.bHWgEb4G4BLPbjEMAcEwTA'
+//     }).addTo(map);
 
-    var issIcon = L.icon({
-        iconUrl: 'imgs/ISSIcon.png',
-        iconSize: [38, 95], // size of the icon
-        iconAnchor: [25, 40], // point of the icon which will correspond to marker's location
-    });
-    var iss = L.marker([0, 0], { icon: issIcon }).addTo(map);
-    setISS();
-};
+//     var issIcon = L.icon({
+//         iconUrl: 'imgs/ISSIcon.png',
+//         iconSize: [38, 95], // size of the icon
+//         iconAnchor: [25, 40], // point of the icon which will correspond to marker's location
+//     });
+//     var iss = L.marker([0, 0], { icon: issIcon }).addTo(map);
+//     setISS();
+// };
 
-renderMap();
+// renderMap();
 
 $(document).ready($(document).on("click", "#submitLogin", function () {
     login = $("#loginInput").val().trim();
