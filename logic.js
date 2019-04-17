@@ -128,13 +128,19 @@ $(document).on("click", "#current-location", function () {
             crossDomain: true,
         }).then(function myCallbackFunction(response) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             for (var i = 0; i < 5; i++) {
 =======
+=======
+>>>>>>> f948e5960f9bc48e0e89e7e3553a0d05f88df247
 
-            console.log("before for")
 
             for(var i = 0; i < 5; i++) {
+<<<<<<< HEAD
 >>>>>>> 8dcb59cc858bd771a5a2565df6e2342c58573ea0
+=======
+
+>>>>>>> f948e5960f9bc48e0e89e7e3553a0d05f88df247
                 var description;
                 description = response.astronomy.astronomy[i].moonPhaseDesc;
                 description = description.split(' ');
