@@ -5,6 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />    
+    <link rel="stylesheet" href="style.css">
+    <title>Home</title>
+</head>
+
+<body>
+
+
+
+
+    <!-- ======================================================================== -->
+
+
+
     <!-- External Links -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -17,18 +32,24 @@
 
 <body>
     <!-- Nav Bar -->
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
             aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
 
         </button>
+
+        <a class="navbar-brand" href="index.html">Menu</a>
+
         <a class="navbar-brand" >Menu</a>
+
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.html">About Us</a>
@@ -54,15 +75,121 @@
     <div class="jumbotron jumbotron-fluid top">
         <div class="container" id="banner" style="height: 300px">
         </div>
+        
+        <input type="text" id="forecastInput">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p id="chat1" class="seatWarmer"></p>
+                <p id="chat2" class="seatWarmer"></p>
+                <p id="chat3" class="seatWarmer"></p>
+                <p id="chat4" class="seatWarmer"></p>
+                <p id="chat5" class="seatWarmer"></p>
+                <input type="text" id="chatInput">
+                <button id="chatSubmit">Chat</button>
+    
+                <input type="text" id="loginInput">
+                <button id="submitLogin">Login</button>
+            </div>
+        </div>
+    
     </div>
     <!-- Intro -->
-    <div class="row" id="description">
-        <div class="col-4">
-            <h1>What is Clear Moon?</h1><br>
-            Welcome to an application that will help all astronomy fans to forcast Moon Phases within 4 days.
-            Application pulls information with moon rises and moon sets with weather information as well as viewing times for the
+
+    <div class="row">
+        <div class="col-4 clear-moon">
+            <h1>What is Clear Moon?</h1>
+            <p>Welcome to an application that will help all astronomy fans to forcast Moon Phases within 4 days.
+            Application pulls
+            information with moon rises and moon sets with weather information as well as viewing times for the
+
             international space station that's based on the users location. It's time to bring awarenass to more
-            intellectual date nights...
+            intellectual date nights...</p>
+        </div>
+        <div class="col-8">
+            <div id="apod">
+                <h1>Astronomy Photo of The Day</h1>
+                <img src="https://apod.nasa.gov/apod/image/1904/M81salvatore1024.jpg" id="apod-image">
+            </div>
+        </div>
+    </div>
+    
+        <div class="row form-group">
+            <div class="col-12 formStyle">  
+                <input type="text" class="form-control" id="city-input" placeholder="City">
+                
+                <select class="form-control" id="state-select" placeholder="Select State">
+                    <option value="alabama">AL</option>
+                    <option value="alaska">AK</option>
+                    <option value="arizona">AZ</option>
+                    <option value="arkansas">AR</option>
+                    <option value="california">CA</option>
+                    <option value="colorado">CO</option>
+                    <option value="connecticut">CT</option>
+                    <option value="delaware">DE</option>
+                    <option value="district+of+columbia">DC</option>
+                    <option value="florida">FL</option>
+                    <option value="georgia">GA</option>
+                    <option value="guam">GU</option>
+                    <option value="hawaii">HI</option>
+                    <option value="idaho">ID</option>
+                    <option value="illinois">IL</option>
+                    <option value="iowa">IA</option>
+                    <option value="kansas">KS</option>
+                    <option value="kentucky">KY</option>
+                    <option value="louisiana">LA</option>
+                    <option value="maine">ME</option>
+                    <option value="maryland">MD</option>
+                    <option value="massachusetts">MA</option>
+                    <option value="michigan">MI</option>
+                    <option value="minnesota">MN</option>
+                    <option value="mississippi">MS</option>
+                    <option value="missouri">MO</option>
+                    <option value="montana">MT</option>
+                    <option value="nebraska">NE</option>
+                    <option value="nevada">NV</option>
+                    <option value="new+hampshire">NH</option>
+                    <option value="new+jersey">NJ</option>
+                    <option value="new+mexico">NM</option>
+                    <option value="new+york">NY</option>
+                    <option value="north+carolina">NC</option>
+                    <option value="north+dakota">ND</option>
+                    <option value="ohio">OH</option>
+                    <option value="oklahoma">OK</option>
+                    <option value="oregon">OR</option>
+                    <option value="pennsylvania">PA</option>
+                    <option value="puerto+rico">PR</option>
+                    <option value="rhode-island">RI</option>
+                    <option value="south+carolina">SC</option>
+                    <option value="south+dakota">SD</option>
+                    <option value="tennesee">TN</option>
+                    <option value="texas">TX</option>
+                    <option value="utah">UT</option>
+                    <option value="vermont">VT</option>
+                    <option value="virgin+islands">VI</option>
+                    <option value="virginia">VA</option>
+                    <option value="washington">WA</option>
+                    <option value="west+virginia">WV</option>
+                    <option value="wisconsin">WI</option>
+                    <option value="wyoming">WY</option>
+                </select>
+
+                <button id="search-location" class="btn btn-light">Search</button>
+                
+                <h2>OR Search by Current Location</h2>
+                
+                <button id="current-location" class="btn btn-light">Locate</button>
+            </div>  
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div id="weather-target"><h3 id="2" class="remove">Overcast Clouds</h3><img src="./Document_files/04d.png" class="remove"><h4 class="remove">Humidity: 43%</h4><h4 class="remove">Wind: 9 Miles Per Hour</h4></div>
+            </div>
+            <div class="col-lg-6">
+                <div id="moon-target"><h1 id="0" class="remove">Waxing Gibbous</h1><img src="file:///Users/God/Desktop/classgit/ClassProject/imgs/moonPhases/waxing91.png" class="remove"><h4 id="0" class="remove">Visibility: 91%</h4><h3 id="0" class="remove">Sunrise: 6:48AM</h3><h3 id="0" class="remove">Sunset: 7:57PM</h3><h3 id="0" class="remove">Moonrise: 6:08PM</h3><h3 id="0" class="remove">Moonset: 5:59AM</h3></div>
+            </div>
         </div>
         <div class="col-8">
             <!-- Weather Wigdet Section -->
@@ -90,6 +217,45 @@
 
 <!-- Additional Placement (GEOLOC & ISS)-->
 
+
+        <!-- User's Moon Phase Search
+        <div class="row">
+            <div class="col-4">
+                <button id="current-location">Submit</button> -->
+
+        
+        <div class="row">
+            <div class="col-lg-6">
+                <div id="moon-target" class="forecast"></div>
+            </div>
+            <div class="col-lg-6">
+                <div id="weather-target" class="forecast"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="previous-holder"><button id="previous" style="visibility: hidden;">Previous</button></div>
+                <div class="next-holder"><button id="next" style="visibility: visible;">Next</button></div>
+                <div id="page-holder">
+                    <p id="page-index"></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-5">
+                <div id="map" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="position: relative;"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-555px, -88px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 16; transform: translate3d(641px, 195px, 0px) scale(0.25);"></div><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 17; transform: translate3d(641px, 195px, 0px) scale(0.5);"></div><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(427px, 149px, 0px) scale(1);"><img alt="" role="presentation" src="./Document_files/0.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-108px, -32px, 0px); opacity: 1;"><img alt="" role="presentation" src="./Document_files/0.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(148px, -32px, 0px); opacity: 1;"><img alt="" role="presentation" src="./Document_files/0.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(404px, -32px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-marker-pane"><img src="file:///Users/God/Desktop/classgit/ClassProject/imgs/ISSIcon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -25px; margin-top: -40px; width: 38px; height: 95px; transform: translate3d(805px, 288px, 0px); z-index: 288;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(230px, 171px, 0px) scale(0.5);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="http://leafletjs.com/" title="A JS library for interactive maps">Leaflet</a> | Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a></div></div></div></div>
+            </div>
+            <div class="col-lg-7">
+                <div id="pass-info"><h3>Over the next 10 days The International Space Station will be viewable from your location at the following times:</h3><br><li>Tuesday, April 23rd 2019, 6:33 AM for a duration of 550 seconds, starting in the S and moving toward ENE</li><li>Thursday, April 25th 2019, 6:28 AM for a duration of 625 seconds, starting in the SW and moving toward NE</li><li>Friday, April 26th 2019, 5:37 AM for a duration of 495 seconds, starting in the SSW and moving toward ENE</li><li>Saturday, April 27th 2019, 4:47 AM for a duration of 320 seconds, starting in the S and moving toward ENE</li><li>Saturday, April 27th 2019, 6:22 AM for a duration of 590 seconds, starting in the SW and moving toward NE</li></div>
+            </div>
+        </div>
+        
+
+
+
+
+
 <!-- Footer-->
    <footer>
         <div id="footer" class="container">
@@ -98,8 +264,11 @@
         </div>
     </footer>
 
+
 <!--jQuery Link-->
 <script src="https://code.jquery.com/jquery-3.4.0.min.js"   integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="   crossorigin="anonymous"></script>
+
+        <script src="logic.js"></script>
 
 <!-- Chat Hide/Show Functionality -->
 <script>
@@ -108,6 +277,7 @@
         $("#chatbox").toggle();
     });
 </script>
+
 
 </body>
 </html>
