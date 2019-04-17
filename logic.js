@@ -1,5 +1,3 @@
-// $(document).on("ready", function () {
-
 
 var config = {
     apiKey: "AIzaSyAJS4YQWU5DmESeYueG1qH1NGkjv3DncEY",
@@ -19,6 +17,12 @@ var currentPage = 0
 var chatLogCount = 0
 var chatLog = []
 var users = []
+
+$("#submitLogin").on("click", function(e) {
+    e.preventDefault();
+    $("#chatbox").toggle();
+});
+
 
 if (localStorage.getItem('user')) {
     $("#loginInput").val(localStorage.getItem('user'));
@@ -127,20 +131,9 @@ $(document).on("click", "#current-location", function () {
             jsonpCallback: 'myCallbackFunction',
             crossDomain: true,
         }).then(function myCallbackFunction(response) {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             for (var i = 0; i < 5; i++) {
-=======
-=======
->>>>>>> f948e5960f9bc48e0e89e7e3553a0d05f88df247
 
-
-            for(var i = 0; i < 5; i++) {
-<<<<<<< HEAD
->>>>>>> 8dcb59cc858bd771a5a2565df6e2342c58573ea0
-=======
-
->>>>>>> f948e5960f9bc48e0e89e7e3553a0d05f88df247
                 var description;
                 description = response.astronomy.astronomy[i].moonPhaseDesc;
                 description = description.split(' ');
