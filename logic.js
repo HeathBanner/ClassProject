@@ -153,16 +153,24 @@ $(document).ready($(document).on("click", "#current-location", function () {
 
                 var astroForecastDesc = '<h1 id="' + i + '" class="remove">' + description + '</h1>'
 
-                // var astroForecastIcon = $('<img src="https://weather.api.here.com/static/weather/icon/' + response.astronomy.astronomy[i].iconName + '.png" class="remove">')
-                // $("#moonTarget").append(astroForecastIcon)
 
-                var visibilityFloat = 0
+
+                var visibilityFloat;
                 visibilityFloat = parseInt(response.astronomy.astronomy[i].moonPhase * 100)
+                newVis = visibilityFloat.toString()
                 console.log(visibilityFloat)
-                if (visibilityFloat[0] == '-') {
+                if (newVis[0] == '-') {
                     visibilityFloat = parseInt(visibilityFloat) * -1
                     console.log(visibilityFloat)
                 }
+
+                var rawName = response.astronomy.astronomy[i].moonPhaseDesc
+                rawName = rawName.split(' ')
+                var imgName = rawName[0].toLowerCase()
+                console.log("IMG NAME" + imgName)
+                console.log("FLOAT" + visibilityFloat)
+                
+                var astroForecastIcon = $('<img src="imgs/moonPhases/' + imgName + visibilityFloat + '.png" class="remove">')
 
                 var visibility = '<h4 id="' + i + '" class="remove">Visibility: ' + visibilityFloat + '%</h4>'
 
@@ -176,6 +184,7 @@ $(document).ready($(document).on("click", "#current-location", function () {
 
                 moonList[i] = {
                     astroForecastDesc: astroForecastDesc,
+                    astroForecastIcon: astroForecastIcon,
                     visibility: visibility,
                     sunrise: sunrise,
                     sunset: sunset,
@@ -190,6 +199,7 @@ $(document).ready($(document).on("click", "#current-location", function () {
             console.log("MOON LIST TEST")
             console.log(moonList[0])
             $("#moon-target").append(moonList[0].astroForecastDesc)
+            $("#moon-target").append(moonList[0].astroForecastIcon)
             $("#moon-target").append(moonList[0].visibility)
             $("#moon-target").append(moonList[0].sunrise)
             $("#moon-target").append(moonList[0].sunset)
@@ -275,13 +285,6 @@ $(document).ready($(document).on("click", "#current-location", function () {
             $("#page-index").text(weatherList[0].date)
 
         })
-<<<<<<< HEAD
-
-        
-       
-
-=======
->>>>>>> 701e2e783064a7655f8a388b378a2e591801d474
     })
 
     function setISS() {
@@ -339,6 +342,7 @@ $(document).ready($(document).on("click", "#next", function () {
     if (currentPage <= 4) {
 
         $("#moon-target").append(moonList[currentPage].astroForecastDesc)
+        $("#moon-target").append(moonList[currentPage].astroForecastIcon)
         $("#moon-target").append(moonList[currentPage].visibility)
         $("#moon-target").append(moonList[currentPage].sunrise)
         $("#moon-target").append(moonList[currentPage].sunset)
@@ -371,6 +375,7 @@ $(document).ready($(document).on("click", "#previous", function () {
     if (currentPage >= 0) {
 
         $("#moon-target").append(moonList[currentPage].astroForecastDesc)
+        $("#moon-target").append(moonList[currentPage].astroForecastIcon)
         $("#moon-target").append(moonList[currentPage].visibility)
         $("#moon-target").append(moonList[currentPage].sunrise)
         $("#moon-target").append(moonList[currentPage].sunset)
