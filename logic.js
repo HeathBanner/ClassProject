@@ -139,12 +139,7 @@ $(document).ready($(document).on("click", "#current-location", function () {
 
             console.log("before for")
 
-<<<<<<< HEAD
-
-            for (var i = 0; i < 5; i++) {
-=======
             for(var i = 0; i < 5; i++) {
->>>>>>> 9374ed317e31d39ebd69448e40a63876617d11ef
                 var description;
                 description = response.astronomy.astronomy[i].moonPhaseDesc
                 description = description.split(' ')

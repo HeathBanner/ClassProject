@@ -1,19 +1,60 @@
-/* .gif {
-    background-image: url("moon.gif") center no-repeat;
- } */
+
+
+nav {
+    background: white;
+}
+
+  
+
 #chatbox {
     position: absolute;
     top: 100px;
-    right: 40px;
-    
+    right: 40px; 
 }
+
+.clear-moon {
+    background: #666;
+}
+
+#apod {
+    text-align: center;
+}
+
+#apod-image {
+    width: 100%;
+    height: 100%;
+}
+
+.formStyle {
+    text-align: center;
+    display: inline;
+    background: #777;
+}  
+
+#city-input {
+    width: 250px;
+    display: inline;
+    margin: 20px 0px;
+}
+
+#state-select {
+    width: 50px;
+    display: inline;
+    margin: 20px;
+}
+
+#current-location {
+    margin: 20px;
+}
+
+
 
 .invis {
     display: none;
 }
 
 .top { 
-    background: url("banner.png") no-repeat center center; 
+    background: url("assets/banner.png") no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -41,6 +82,10 @@ border: dotted;
 #iss {
 position: absolute;
 padding: 40px;
+}
+
+#next {
+    visibility: hidden;
 }
 
 @media screen and (max-width: 800px) {

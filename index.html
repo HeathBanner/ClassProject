@@ -4,30 +4,13 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./Document_files/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./Document_files/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="">
-    <link rel="stylesheet" href="file:///Users/God/Desktop/classgit/ClassProject/style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />    
+    <link rel="stylesheet" href="style.css">
+    <title>Home</title>
 </head>
 
 <body>
 
-    <input type="text" id="forecastInput">
-
-    <div class="row">
-        <div class="col-lg-12">
-            <p id="chat1" class="seatWarmer">Heath: maybe</p>
-            <p id="chat2" class="seatWarmer">Heath: maybe</p>
-            <p id="chat3" class="seatWarmer">Heath: Hey</p>
-            <p id="chat4" class="seatWarmer">Heath: lol</p>
-            <p id="chat5" class="seatWarmer">HeathBanner: Lol</p>
-            <input type="text" id="chatInput">
-            <button id="chatSubmit">Chat</button>
-
-            <input type="text" id="loginInput">
-            <button id="submitLogin">Login</button>
-        </div>
-    </div>
 
 
 
@@ -39,15 +22,15 @@
             <span class="navbar-togg
                 ler-icon"></span>
         </button>
-        <a class="navbar-brand" href="file:///Users/God/Desktop/classgit/ClassProject/index.html#">Menu</a>
+        <a class="navbar-brand" href="index.html">Menu</a>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="file:///Users/God/Desktop/classgit/ClassProject/index.html#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="file:///Users/God/Desktop/classgit/ClassProject/index.html#">About Us</a>
+                    <a class="nav-link" href="about.html">About Us</a>
                 </li>
 
             </ul>
@@ -62,47 +45,47 @@
     <div class="jumbotron jumbotron-fluid top">
         <div class="container" id="banner" style="height: 300px">
         </div>
+        
+        <input type="text" id="forecastInput">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p id="chat1" class="seatWarmer"></p>
+                <p id="chat2" class="seatWarmer"></p>
+                <p id="chat3" class="seatWarmer"></p>
+                <p id="chat4" class="seatWarmer"></p>
+                <p id="chat5" class="seatWarmer"></p>
+                <input type="text" id="chatInput">
+                <button id="chatSubmit">Chat</button>
+    
+                <input type="text" id="loginInput">
+                <button id="submitLogin">Login</button>
+            </div>
+        </div>
+    
     </div>
     <!-- Intro -->
-    <div class="row" id="description">
-        <div class="col-8">
-            <h1>What is Clear Moon?</h1><br>
-            Welcome to an application that will help all astronomy fans to forcast Moon Phases within 4 days.
+    <div class="row">
+        <div class="col-4 clear-moon">
+            <h1>What is Clear Moon?</h1>
+            <p>Welcome to an application that will help all astronomy fans to forcast Moon Phases within 4 days.
             Application pulls
             information with moon rises and moon sets with weather information as well as viewing times for the
             international space station that's based on the users location. It's time to bring awarenass to more
-            intellectual date nights...
+            intellectual date nights...</p>
         </div>
-        <div class="col-4">
-            <!-- Weather Wigdet Section -->
-            <div class="card border-light mb-3" style="max-width: 18rem;" id="cardWeather">
-                <div class="card-header">Weather Placeholder</div>
-                <div class="card-body">
-                    <h5 class="card-title">Widget</h5>
-                    <p class="card-text">Weather api should display here...</p>
-                </div>
+        <div class="col-8">
+            <div id="apod">
+                <h1>Astronomy Photo of The Day</h1>
+                <img src="https://apod.nasa.gov/apod/image/1904/M81salvatore1024.jpg" id="apod-image">
             </div>
         </div>
     </div>
-
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-
-=======
-    <br>
-    <div class="row">
-        <div class="col-8">
-            <!-- <h5 class="card-title">Moon Phase</h5>
-                <p class="card-text">Moon Phase api should display here...</p> -->
-        </div>
-    </div>
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 701e2e783064a7655f8a388b378a2e591801d474
-
     
         <div class="row form-group">
-            <div class="col-lg-2">
+            <div class="col-12 formStyle">  
                 <input type="text" class="form-control" id="city-input" placeholder="City">
-            </div>
-            <div class="col-lg-1">
+                
                 <select class="form-control" id="state-select" placeholder="Select State">
                     <option value="alabama">AL</option>
                     <option value="alaska">AK</option>
@@ -158,16 +141,13 @@
                     <option value="wisconsin">WI</option>
                     <option value="wyoming">WY</option>
                 </select>
-            </div>
-            <div class="col-lg-1">
+
                 <button id="search-location" class="btn btn-light">Search</button>
-            </div>
-            <div class="col-lg-4">
+                
                 <h2>OR Search by Current Location</h2>
-            </div>
-            <div class="col-lg-4">
+                
                 <button id="current-location" class="btn btn-light">Locate</button>
-            </div>
+            </div>  
         </div>
 
 
@@ -186,10 +166,7 @@
         <!-- User's Moon Phase Search
         <div class="row">
             <div class="col-4">
-<<<<<<< HEAD
-=======
                 <button id="current-location">Submit</button> -->
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 701e2e783064a7655f8a388b378a2e591801d474
                 <!-- <label for="start">Search Date:</label> -->
                 <!-- <input type="date" id="start" name="trip-start" value="2019-04-15" min="2019-04-01" max="2019-12-31">
                 <form>
@@ -214,7 +191,7 @@
                 <div class="previous-holder"><button id="previous" style="visibility: hidden;">Previous</button></div>
                 <div class="next-holder"><button id="next" style="visibility: visible;">Next</button></div>
                 <div id="page-holder">
-                    <p id="page-index">04/17/2019</p>
+                    <p id="page-index"></p>
                 </div>
             </div>
         </div>
@@ -248,15 +225,12 @@
                                 </div>
                                 <div>
                     <br>
-<<<<<<< HEAD
                     Page Break -->
                     <!-- <center><img src="assets/moon.gif" class="img-fluid" style="height: 200px"></center> -->
                              <!-- </div><br>
-=======
 
                     <center><img src="assets/moon.gif" class="img-fluid" style="height: 200px"></center>
                               </div><br>
->>>>>>> 701e2e783064a7655f8a388b378a2e591801d474
                         </div>
             </div>
             </div>
@@ -272,7 +246,7 @@
         <script src="./Document_files/firebase.js"></script>
         <script src="./Document_files/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
         <script src="./Document_files/moment.min.js"></script>
-        <script src="file:///Users/God/Desktop/classgit/ClassProject/logic.js"></script>
+        <script src="logic.js"></script>
     
 
 </body></html>
