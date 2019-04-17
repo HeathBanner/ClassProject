@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 nav {
@@ -18,6 +19,20 @@ nav {
 
 #apod {
     text-align: center;
+=======
+.top { 
+    background: url("banner.png") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: contain;
+  }
+  
+#chatbox {
+    position: absolute;
+    top: 100px;
+    right: 40px;
+>>>>>>> 62bf637dd43cac85e5ec591b372eda2c662c46c2
 }
 
 #apod-image {
@@ -53,6 +68,7 @@ nav {
     display: none;
 }
 
+<<<<<<< HEAD
 .top { 
     background: url("assets/banner.png") no-repeat center center; 
     -webkit-background-size: cover;
@@ -61,17 +77,22 @@ nav {
     background-size: contain;
   }
 
+=======
+>>>>>>> 62bf637dd43cac85e5ec591b372eda2c662c46c2
 body {
     padding: 30px;
     background-color: black;
     opacity: 1;
     color: white;
+    font-family: 'Orbitron', sans-serif;
 }
+
 
 #cardWeather {
     color:  #350e60;
 }
 
+<<<<<<< HEAD
 
 hr {
 color: white;
@@ -88,6 +109,8 @@ padding: 40px;
     visibility: hidden;
 }
 
+=======
+>>>>>>> 62bf637dd43cac85e5ec591b372eda2c662c46c2
 @media screen and (max-width: 800px) {
 .top {
     background: url("banner.png") no-repeat center center; 
@@ -95,4 +118,8 @@ padding: 40px;
     -moz-background-size: cover;
     -o-background-size: cover;
 }
+}
+
+#copyright {
+    text-align: center;
 }
