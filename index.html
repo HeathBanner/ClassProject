@@ -5,46 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Links -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-        crossorigin="" />
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Clear Moon App</title>
 </head>
 
 <body>
-
-    <input type="text" id="forecastInput">
-
-    <div class="row">
-        <div class="col-lg-12">
-            <p id="chat1" class="seatWarmer"></p>
-            <p id="chat2" class="seatWarmer"></p>
-            <p id="chat3" class="seatWarmer"></p>
-            <p id="chat4" class="seatWarmer"></p>
-            <p id="chat5" class="seatWarmer"></p>
-            <input type="text" id="chatInput">
-            <button id="chatSubmit">Chat</button>
-
-            <input type="text" id="loginInput">
-            <button id="submitLogin">Login</button>
-        </div>
-    </div>
-
-
-
-    <!-- ======================================================================== -->
-
-
+    <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
             aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-togg
-                ler-icon"></span>
+            ler-icon"></span>
+
         </button>
-        <a class="navbar-brand" href="#">Menu</a>
+        <a class="navbar-brand" >Menu</a>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -52,7 +31,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="about.html">About Us</a>
                 </li>
 
             </ul>
@@ -62,8 +41,15 @@
                     id="logInput">
                 <button class="btn btn-outline-success my-2 my-sm-0" id="submitLogin" type="submit">Log-In</button>
             </form>
-        </div>
-    </nav>
+        </div></nav>
+        <form id="chatbox" style="width: 300px" class="invis"> <div class="form-group">
+                <label for="exampleFormControlTextarea1">Chat</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="50"></textarea>
+              </div>
+            </form>
+   
+
+
     <!-- Logo Banner -->
     <div class="jumbotron jumbotron-fluid top">
         <div class="container" id="banner" style="height: 300px">
@@ -71,17 +57,16 @@
     </div>
     <!-- Intro -->
     <div class="row" id="description">
-        <div class="col-8">
+        <div class="col-4">
             <h1>What is Clear Moon?</h1><br>
             Welcome to an application that will help all astronomy fans to forcast Moon Phases within 4 days.
-            Application pulls
-            information with moon rises and moon sets with weather information as well as viewing times for the
+            Application pulls information with moon rises and moon sets with weather information as well as viewing times for the
             international space station that's based on the users location. It's time to bring awarenass to more
             intellectual date nights...
         </div>
-        <div class="col-4">
+        <div class="col-8">
             <!-- Weather Wigdet Section -->
-            <div class="card border-light mb-3" style="max-width: 18rem;" id="cardWeather">
+            <div class="weatherPlaceholder" style="max-width: 18rem;" id="cardWeather">
                 <div class="card-header">Weather Placeholder</div>
                 <div class="card-body">
                     <h5 class="card-title">Widget</h5>
@@ -94,180 +79,61 @@
     <br>
     <div class="row">
         <div class="col-8">
-            <!-- <h5 class="card-title">Moon Phase</h5>
-                <p class="card-text">Moon Phase api should display here...</p> -->
+            <h5 class="card-title">Moon Phase</h5>
+            <p class="card-text">Moon Phase api should display here...</p>
         </div>
     </div>
+    </div>
+    </div>
 
-    <body>
-        <div class="row form-group">
-            <div class="col-lg-2">
-                <input type="text" class="form-control" id="city-input" placeholder="City">
-            </div>
-            <div class="col-lg-1">
-                <select class="form-control" id="state-select" placeholder="Select State">
-                    <option value="alabama">AL</option>
-                    <option value="alaska">AK</option>
-                    <option value="arizona">AZ</option>
-                    <option value="arkansas">AR</option>
-                    <option value="california">CA</option>
-                    <option value="colorado">CO</option>
-                    <option value="connecticut">CT</option>
-                    <option value="delaware">DE</option>
-                    <option value="district+of+columbia">DC</option>
-                    <option value="florida">FL</option>
-                    <option value="georgia">GA</option>
-                    <option value="guam">GU</option>
-                    <option value="hawaii">HI</option>
-                    <option value="idaho">ID</option>
-                    <option value="illinois">IL</option>
-                    <option value="iowa">IA</option>
-                    <option value="kansas">KS</option>
-                    <option value="kentucky">KY</option>
-                    <option value="louisiana">LA</option>
-                    <option value="maine">ME</option>
-                    <option value="maryland">MD</option>
-                    <option value="massachusetts">MA</option>
-                    <option value="michigan">MI</option>
-                    <option value="minnesota">MN</option>
-                    <option value="mississippi">MS</option>
-                    <option value="missouri">MO</option>
-                    <option value="montana">MT</option>
-                    <option value="nebraska">NE</option>
-                    <option value="nevada">NV</option>
-                    <option value="new+hampshire">NH</option>
-                    <option value="new+jersey">NJ</option>
-                    <option value="new+mexico">NM</option>
-                    <option value="new+york">NY</option>
-                    <option value="north+carolina">NC</option>
-                    <option value="north+dakota">ND</option>
-                    <option value="ohio">OH</option>
-                    <option value="oklahoma">OK</option>
-                    <option value="oregon">OR</option>
-                    <option value="pennsylvania">PA</option>
-                    <option value="puerto+rico">PR</option>
-                    <option value="rhode-island">RI</option>
-                    <option value="south+carolina">SC</option>
-                    <option value="south+dakota">SD</option>
-                    <option value="tennesee">TN</option>
-                    <option value="texas">TX</option>
-                    <option value="utah">UT</option>
-                    <option value="vermont">VT</option>
-                    <option value="virgin+islands">VI</option>
-                    <option value="virginia">VA</option>
-                    <option value="washington">WA</option>
-                    <option value="west+virginia">WV</option>
-                    <option value="wisconsin">WI</option>
-                    <option value="wyoming">WY</option>
-                </select>
-            </div>
-            <div class="col-lg-1">
-                <button id="search-location" class="btn btn-light">Search</button>
-            </div>
-            <div class="col-lg-4">
-                <h2>OR Search by Current Location</h2>
-            </div>
-            <div class="col-lg-4">
-                <button id="current-location" class="btn btn-light">Locate</button>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-lg-6">
-                <div id="weather-target"></div>
-            </div>
-            <div class="col-lg-6">
-                <div id="moon-target"></div>
-            </div>
-        </div>
-
-        </div>
-
-
-        <!-- User's Moon Phase Search
-        <div class="row">
-            <div class="col-4">
-                <button id="current-location">Submit</button> -->
-                <!-- <label for="start">Search Date:</label> -->
-                <!-- <input type="date" id="start" name="trip-start" value="2019-04-15" min="2019-04-01" max="2019-12-31">
-                <form>
-                    <input type="text" class="form-control" placeholder="City">
-                    <input type="text" class="form-control" placeholder="State">
-                    <input type="text" class="form-control" placeholder="Zip">
-                    <button type="button" class="btn btn-light">Search Moon Phase</button>
-            </div>
-            </form> -->
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div id="moon-target" class="forecast"></div>
-            </div>
-            <div class="col-lg-6">
-                <div id="weather-target" class="forecast"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="previous-holder"></div>
-                <div class="next-holder"></div>
-                <div id="page-holder">
-                    <p id="page-index"></p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-lg-5">
-                <div id="map"></div>
-            </div>
-            <div class="col-lg-7">
-                <div id="pass-info"></div>
-            </div>
-        </div>
-        
-
-
-        <!-- <div class="row">
-            <div class="col-8">
-                <h1>ISS MAP</h1>
-            </div>
-            <div>
+    <!-- User's Moon Phase Search -->
     
-            <div class="row">
-                <div class="col-4">
-                    <h1>ISS INFO</h1>
-                </div>
-                <div>
-    <br>
-                        <div class="row">
-                                <div class="col-4">
-                                    <h1>Chat Placement</h1>
-                                </div>
-                                <div>
-                    <br>
+    <!-- <div class="row">
+        <div class="col-4"><label for="start">Search Date:</label>
+            <input type="date" id="start" name="trip-start" value="2019-04-15" min="2019-04-01" max="2019-12-31">
+            <form>
+                <input type="text" class="form-control" placeholder="City">
+                <input type="text" class="form-control" placeholder="State">
+                <input type="text" class="form-control" placeholder="Zip">
+                <button type="button" class="btn btn-light">Search Moon Phase</button>
+        </div>
+        </form>
+    </div> -->
 
-                    <center><img src="assets/moon.gif" class="img-fluid" style="height: 200px"></center>
-                              </div><br>
-                        </div>
-            </div>
-            </div>
-            </div>
-            </div> -->
-        <!-- </div> -->
+<!-- Loading Button -->
+    <!-- <button class="btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span class="sr-only">Loading...</span>
+          </button>
+          <button class="btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading...
+          </button> -->
 
+<!-- Additional Placement (GEOLOC & ISS)-->
 
+<!-- Page Break -->
+                <center><img src="assets/moon.gif" class="img-fluid" style="height: 200px"></center>
+            </div><br>
 
+<!--jQuery Link-->
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"   integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="   crossorigin="anonymous"></script>
 
+<!-- Chat Hide/Show Functionality -->
+<script>
+    
+    $("#submitLogin").on("click", function(e) {
+        e.preventDefault();
+        // if ($("#chatbox").hasClass("invis")){ //if its not there
+        //     $("#chatbox").removeClass("invis"); //making it invis- IS NOT display
+        // } //if whats in paren is true do whats inthe curly braces
+        // else {
+        // $("#chatbox").addClass("invis"); //adding class
+        // }
+        $("#chatbox").toggle();
+    });
+</script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
-        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-            crossorigin=""></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-        <script src="logic.js"></script>
-    </body>
+</body>
 
 </html>
