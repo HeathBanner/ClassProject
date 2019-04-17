@@ -12,13 +12,13 @@
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin="" />
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
     <title>Clear Moon App</title>
 </head>
-
-<body>
-   
 
 <body>
     <!-- Nav Bar -->
@@ -202,13 +202,15 @@
             </div>
             </div>
             </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-5">
+                <H3>Current Location of the International Space Station</H3>
+                <div id="map"></div>
             </div>
-            </div>
-    
-            <div class="col-lg-7 colp">
-                <div id="pass-info">
-                </div>
-            </div>
+            <div class="col-lg-7">
+                <div id="pass-info"></div>
         </div>
 
 
@@ -222,6 +224,11 @@
         </div>
 
 <!--jQuery Link-->
-    <script src="logic.js"></script>
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+crossorigin=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="config.js"></script>
+<script src="logic.js"></script>
 </body>
 </html>

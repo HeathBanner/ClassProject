@@ -5,12 +5,18 @@ body {
     font-family: 'Orbitron', sans-serif;
 }
 
+<<<<<<< HEAD
 .colp {
     padding: 0px;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
     background-color: white;
+=======
+#map {
+    height: 200px;
+    width: 300px;
+>>>>>>> c06bf2fe6ab65aef989f6fc6d9d3b76de9323881
 }
 
 .top { 
