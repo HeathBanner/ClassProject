@@ -240,7 +240,7 @@ $(document).ready($(document).on("click", "#current-location", function () {
                 else {
                     data['passes'].forEach(function (pass) {
                         var timeStamp = pass['startUTC'];
-                        var passTime = moment.unix(timeStamp).format('dddd, MMMM Do YYYY, h:mm ha z');
+                        var passTime = moment.unix(timeStamp).format('dddd, MMMM Do YYYY, h:mm, A');
                         $("#pass-info").append("<li class='remove'>" + passTime + " for a duration of " + pass['duration'] + " seconds, starting in the " + pass['startAzCompass'] + " and moving toward " + pass['endAzCompass'] + "</li>");
                     });
                 };
