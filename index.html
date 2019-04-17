@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<!-- saved from url=(0058)file:///Users/God/Desktop/classgit/ClassProject/index.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <!-- Links -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -11,80 +13,112 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>Clear Moon App</title>
+
 </head>
 
 <body>
 
 
+
+    <!-- External Links -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <title>Clear Moon App</title>
+</head>
+
+<body>
+    <!-- Nav Bar -->
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-togg
-                ler-icon"></span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+
         </button>
-        <a class="navbar-brand" href="file:///Users/God/Desktop/classgit/ClassProject/index.html#">Menu</a>
+
+        <a class="navbar-brand" href="index.html">Menu</a>
+
+        <a class="navbar-brand" >Menu</a>
+
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="file:///Users/God/Desktop/classgit/ClassProject/index.html#">Home <span class="sr-only">(current)</span></a>
+
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="file:///Users/God/Desktop/classgit/ClassProject/index.html#">About Us</a>
+                    <a class="nav-link" href="about.html">About Us</a>
                 </li>
 
             </ul>
             <!-- Log-Input/Submit -->
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Create Log-In Here" aria-label="Search" id="logInput">
+                <input class="form-control mr-sm-2" type="search" placeholder="Create Log-In Here" aria-label="Search"
+                    id="logInput">
                 <button class="btn btn-outline-success my-2 my-sm-0" id="submitLogin" type="submit">Log-In</button>
             </form>
-        </div>
-    </nav>
+        </div></nav>
+        <form id="chatbox" style="width: 300px" class="invis"> <div class="form-group">
+                <label for="exampleFormControlTextarea1">Chat</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="50"></textarea>
+              </div>
+            </form>
+   
+
+
     <!-- Logo Banner -->
     <div class="jumbotron jumbotron-fluid top">
         <div class="container" id="banner" style="height: 300px">
         </div>
+        
+        <input type="text" id="forecastInput">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p id="chat1" class="seatWarmer"></p>
+                <p id="chat2" class="seatWarmer"></p>
+                <p id="chat3" class="seatWarmer"></p>
+                <p id="chat4" class="seatWarmer"></p>
+                <p id="chat5" class="seatWarmer"></p>
+                <input type="text" id="chatInput">
+                <button id="chatSubmit">Chat</button>
+    
+                <input type="text" id="loginInput">
+                <button id="submitLogin">Login</button>
+            </div>
+        </div>
+    
     </div>
     <!-- Intro -->
-    <div class="row" id="description">
-        <div class="col-8">
-            <h1>What is Clear Moon?</h1><br>
-            Welcome to an application that will help all astronomy fans to forcast Moon Phases within 4 days.
+
+    <div class="row">
+        <div class="col-4 clear-moon">
+            <h1>What is Clear Moon?</h1>
+            <p>Welcome to an application that will help all astronomy fans to forcast Moon Phases within 4 days.
             Application pulls
             information with moon rises and moon sets with weather information as well as viewing times for the
+
             international space station that's based on the users location. It's time to bring awarenass to more
-            intellectual date nights...
+            intellectual date nights...</p>
         </div>
-        <div class="col-4">
-            <!-- Weather Wigdet Section -->
-            <div class="card border-light mb-3" style="max-width: 18rem;" id="cardWeather">
-                <div class="card-header">Weather Placeholder</div>
-                <div class="card-body">
-                    <h5 class="card-title">Widget</h5>
-                    <p class="card-text">Weather api should display here...</p>
-                </div>
+
+        <div class="col-8">
+            <div id="apod">
+                <h1>Astronomy Photo of The Day</h1>
+                <img src="https://apod.nasa.gov/apod/image/1904/M81salvatore1024.jpg" id="apod-image">
             </div>
         </div>
     </div>
-
-
-
-
-    <br>
-    <div class="row">
-        <div class="col-8">
-            <!-- <h5 class="card-title">Moon Phase</h5>
-                <p class="card-text">Moon Phase api should display here...</p> -->
-        </div>
-    </div>
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 701e2e783064a7655f8a388b378a2e591801d474
-
     
         <div class="row form-group">
-            <div class="col-lg-2">
+            <div class="col-12 formStyle">  
                 <input type="text" class="form-control" id="city-input" placeholder="City">
-            </div>
-            <div class="col-lg-1">
+                
                 <select class="form-control" id="state-select" placeholder="Select State">
                     <option value="alabama">AL</option>
                     <option value="alaska">AK</option>
@@ -140,16 +174,13 @@
                     <option value="wisconsin">WI</option>
                     <option value="wyoming">WY</option>
                 </select>
-            </div>
-            <div class="col-lg-1">
+
                 <button id="search-location" class="btn btn-light">Search</button>
-            </div>
-            <div class="col-lg-4">
+                
                 <h2>OR Search by Current Location</h2>
-            </div>
-            <div class="col-lg-4">
+                
                 <button id="current-location" class="btn btn-light">Locate</button>
-            </div>
+            </div>  
         </div>
 
 
@@ -161,27 +192,38 @@
                 <div id="moon-target"><h1 id="0" class="remove">Waxing Gibbous</h1><img src="file:///Users/God/Desktop/classgit/ClassProject/imgs/moonPhases/waxing91.png" class="remove"><h4 id="0" class="remove">Visibility: 91%</h4><h3 id="0" class="remove">Sunrise: 6:48AM</h3><h3 id="0" class="remove">Sunset: 7:57PM</h3><h3 id="0" class="remove">Moonrise: 6:08PM</h3><h3 id="0" class="remove">Moonset: 5:59AM</h3></div>
             </div>
         </div>
+        <div class="col-8">
+            <!-- Weather Wigdet Section -->
+            <div class="weatherPlaceholder" style="max-width: 18rem;" id="cardWeather">
+                <div class="card-header">Weather Placeholder</div>
+                <div class="card-body">
+                    <h5 class="card-title">Widget</h5>
+                    <p class="card-text">Weather api should display here...</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        
+    <br>
+    <div class="row">
+        <div class="col-8">
+            <h5 class="card-title">Moon Phase</h5>
+            <p class="card-text">Moon Phase api should display here...</p>
+        </div>
+    </div>
+    </div>
+    </div>
+
+<!-- User's Moon Phase Search -->
+
+<!-- Additional Placement (GEOLOC & ISS)-->
 
 
         <!-- User's Moon Phase Search
         <div class="row">
             <div class="col-4">
-<<<<<<< HEAD
-=======
                 <button id="current-location">Submit</button> -->
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 701e2e783064a7655f8a388b378a2e591801d474
-                <!-- <label for="start">Search Date:</label> -->
-                <!-- <input type="date" id="start" name="trip-start" value="2019-04-15" min="2019-04-01" max="2019-12-31">
-                <form>
-                    <input type="text" class="form-control" placeholder="City">
-                    <input type="text" class="form-control" placeholder="State">
-                    <input type="text" class="form-control" placeholder="Zip">
-                    <button type="button" class="btn btn-light">Search Moon Phase</button>
-            </div>
-            </form> -->
-            
+
         
         <div class="row">
             <div class="col-lg-6">
@@ -196,7 +238,7 @@
                 <div class="previous-holder"><button id="previous" style="visibility: hidden;">Previous</button></div>
                 <div class="next-holder"><button id="next" style="visibility: visible;">Next</button></div>
                 <div id="page-holder">
-                    <p id="page-index">04/17/2019</p>
+                    <p id="page-index"></p>
                 </div>
             </div>
         </div>
@@ -212,49 +254,31 @@
         
 
 
-        <!-- <div class="row">
-            <div class="col-8">
-                <h1>ISS MAP</h1>
-            </div>
-            <div>
-    
-            <div class="row">
-                <div class="col-4">
-                    <h1>ISS INFO</h1>
-                </div>
-                <div>
-    <br>
-                        <div class="row">
-                                <div class="col-4">
-                                    <h1>Chat Placement</h1>
-                                </div>
-                                <div>
-                    <br>
-<<<<<<< HEAD
-                    Page Break -->
-                    <!-- <center><img src="assets/moon.gif" class="img-fluid" style="height: 200px"></center> -->
-                             <!-- </div><br>
-=======
-
-                    <center><img src="assets/moon.gif" class="img-fluid" style="height: 200px"></center>
-                              </div><br>
->>>>>>> 701e2e783064a7655f8a388b378a2e591801d474
-                        </div>
-            </div>
-            </div>
-            </div>
-            </div> -->
-        <!-- </div> -->
 
 
 
+<!-- Footer-->
+   <footer>
+        <div id="footer" class="container">
+            <h6 id="copyright"><img src="assets/moon.gif" class="img-fluid" style="height: 200px"> <br>
+                Created By: Heath, Lara and Courtney | 2019</h6>
+        </div>
+    </footer>
 
 
-        <script src="./Document_files/jquery.min.js"></script>
-        <script src="./Document_files/firebase.js"></script>
-        <script src="./Document_files/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
-        <script src="./Document_files/moment.min.js"></script>
-        <script src="file:///Users/God/Desktop/classgit/ClassProject/logic.js"></script>
-    
+<!--jQuery Link-->
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"   integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="   crossorigin="anonymous"></script>
 
-</body></html>
+        <script src="logic.js"></script>
+
+<!-- Chat Hide/Show Functionality -->
+<script>
+    $("#submitLogin").on("click", function(e) {
+        e.preventDefault();
+        $("#chatbox").toggle();
+    });
+</script>
+
+
+</body>
+</html>

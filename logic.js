@@ -127,7 +127,10 @@ $(document).on("click", "#current-location", function () {
             jsonpCallback: 'myCallbackFunction',
             crossDomain: true,
         }).then(function myCallbackFunction(response) {
-            for (var i = 0; i < 5; i++) {
+
+
+            for(var i = 0; i < 5; i++) {
+
                 var description;
                 description = response.astronomy.astronomy[i].moonPhaseDesc;
                 description = description.split(' ');

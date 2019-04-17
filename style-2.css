@@ -1,0 +1,26 @@
+
+.top { 
+    background: url("banner.png") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: contain;
+  }
+
+body {
+    padding: 30px;
+    background-color: black;
+    opacity: 1;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    align-content: center;  
+}
+
+.navBar {
+    color: #350e60;
+}
+
+#copyright {
+    text-align: center;
+    align-content: center;
+}
