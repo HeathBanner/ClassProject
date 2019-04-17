@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 
 
+
 nav {
     background: white;
 }
@@ -33,6 +34,20 @@ nav {
     top: 100px;
     right: 40px;
 >>>>>>> 62bf637dd43cac85e5ec591b372eda2c662c46c2
+}
+
+.top { 
+    background: url("banner.png") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: contain;
+  }
+  
+#chatbox {
+    position: absolute;
+    top: 100px;
+    right: 40px;
 }
 
 #apod-image {
@@ -93,7 +108,10 @@ body {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> f948e5960f9bc48e0e89e7e3553a0d05f88df247
 hr {
 color: white;
 border-width: thick;
