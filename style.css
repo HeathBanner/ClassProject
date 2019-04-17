@@ -13,7 +13,7 @@
 }
 
 .top { 
-    background: url("banner.png") no-repeat center center; 
+    background: url("assets/banner.png") no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
