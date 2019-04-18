@@ -42,7 +42,6 @@ database.ref('chatLog').update({
 
 function getAPOD() {
     $.getJSON('https://api.nasa.gov/planetary/apod?api_key=' + nasaKey, function (data) {
-        console.log(data)
         
         $("#apod").attr("class", 'apod-image')
 
@@ -495,3 +494,33 @@ $(document).on("click", "#previous", function () {
         });
     };
 });
+
+console.log("                 *")
+console.log("            *          .")
+console.log("                   *       '")
+console.log("              *                *")
+console.log("")
+console.log("")
+console.log("")
+console.log("")
+console.log(" *   '*")
+console.log("           *")
+console.log("                *")
+console.log("                       *")
+console.log("               *")
+console.log("                     *")
+console.log("")
+console.log("        .                      .")
+console.log("         .                      ;")
+console.log("         :                  - --+- -")
+console.log("         !           .          !")
+console.log("         |        .             .")
+console.log("         |_         +")
+console.log("      ,  | `.")
+console.log("--- --+-<#>-+- ---  --  -")
+console.log("      `._|_,'")
+console.log("         T")
+console.log("         |")
+console.log("         !")
+console.log("         :         . :")
+console.log("         .       *")
