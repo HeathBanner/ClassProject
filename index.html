@@ -22,58 +22,76 @@
 
 <body>
     <!-- Nav Bar -->
-    <div class="row">
-    <div class="col-lg-12">
-        <nav class="navbar navbar-expand-lg navbar-light top">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
-            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+   <header>
+    <!-- <div class="container-fluid"> -->
+        <!-- <div class="row clear-right top">
+            <div class="col-xl-3 col-lg-3 col-md-3">
+                <ul class="customNav">
+                    <li class="navLi">
+                        <a href="index.html" class="navLink" id="home-nav">Home</a>
+                    </li>
+                    <li class="navLi">
+                        <a href="about.html" class="navLink">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3"></div>
+            <div class="col-lg-6 col-xl-6 col-lg-6 col-md-6 colp">
+            
+            
+            </div>
+        </div> -->
+    <!-- </div> -->
 
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">About Us</a>
-                </li>
+    <!-- Nav Bar -->
 
-            </ul>
-            <!-- Log-Input/Submit -->
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Create Log-In Here" aria-label="Search"
-                    id="logInput">
-                <button class="btn btn-outline-success my-2 my-sm-0" id="submitLogin" type="submit">Log-In</button>
-            </form>
-        </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="loginDiv">
+                <input type="text" id="loginInput" placeholder="Type your username...">
+                <button id="submitLogin">Login</button>
+            </div> 
+
         </nav>
-            <form id="chatbox" style="width: 300px" class="invis"> <div class="form-group">
-                <label for="exampleFormControlTextarea1">Chat</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="50"></textarea>
-              </div>
-            </form>
-    </div>
-    </div>
+    </header>
 
-    <div class="row">
-        <div class="col-lg-12 chat-bg">
+
+    <div class="row banner-bg" style="height: 300px">
+        <div class="col-lg-12">
             <div class="row">
-                <div class="col-lg-6 colp">
-
+                <div class="col-lg-3"></div>
+                <div class="col-lg-4 colp">
+                        <div class="jumbotron jumbotron-fluid top">
+                            <div class="container" id="banner">
+                            </div> 
+                        </div>                        
+                    
                 </div>
-                <div class="col-lg-6 colp">
-                    <div id="chatDiv">
-                        <p id="chat1" class="seatWarmer"></p>
-                        <p id="chat2" class="seatWarmer"></p>
-                        <p id="chat3" class="seatWarmer"></p>
-                        <p id="chat4" class="seatWarmer"></p>
-                        <p id="chat5" class="seatWarmer"></p>
-                        <div id="chatInputDiv">   
-                            <input type="text" id="chatInput">
-                            <button id="chatSubmit">Chat</button>
-                        </div> 
-                    </div>
+                <div class="col-lg-5">
+                        <div id="chatDiv">
+                                <p id="chat1" class="seatWarmer"></p>
+                                <p id="chat2" class="seatWarmer"></p>
+                                <p id="chat3" class="seatWarmer"></p>
+                                <p id="chat4" class="seatWarmer"></p>
+                                <p id="chat5" class="seatWarmer"></p>
+                                <div id="chatInputDiv">   
+                                    <input type="text" id="chatInput">
+                                    <button id="chatSubmit">Chat</button>
+                                </div> 
+                            </div>        
                 </div>
             </div>
             
@@ -84,99 +102,127 @@
 
 
     <!-- Logo Banner -->
-    <!-- <div class="jumbotron jumbotron-fluid top">
-        <div class="container" id="banner" style="height: 300px">
-        </div>    
-    </div> -->
     <!-- Intro -->
-        <div class="row">
-            <div class="col-4 clear-moon">
+
+        <!-- <div class="row clear-moon-body">
+            <div class="col-12 clear-moon">
                 <h1 id="moon-header">What is Clear Moon?</h1>
                 <p id="moon-body">Welcome to an application that will help all astronomy fans to forcast Moon Phases within 4 days.
                 Application pulls
-                information with moon rises and moon sets with weather information as well as viewing times for the
+                information with moon rises and moon sets with weather information as well as viewing times for the ISS.
             </div>
-
-            <div class="col-8 colp">
+        </div> -->
+<!-- ADD TO NEW ROW!!!! -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 id="apod-header">Astronomy Photo of The Day</h1>
+            </div>
+        </div>
+       
+        <div class="row">
+            <div class="col-lg-12 apod-col colp">
                 <div id="apod">
-                    <h1 id="apod-header">Astronomy Photo of The Day</h1>
-                </div>
+                </div>    
             </div>
-        </div>
-        <div class="row form-group">
-            <div class="col-12 formStyle colp">  
-                <input type="text" class="form-control" id="city-input" placeholder="City">
-                
-                <select class="form-control" id="state-select" placeholder="Select State">
-                    <option value="alabama">AL</option>
-                    <option value="alaska">AK</option>
-                    <option value="arizona">AZ</option>
-                    <option value="arkansas">AR</option>
-                    <option value="california">CA</option>
-                    <option value="colorado">CO</option>
-                    <option value="connecticut">CT</option>
-                    <option value="delaware">DE</option>
-                    <option value="district+of+columbia">DC</option>
-                    <option value="florida">FL</option>
-                    <option value="georgia">GA</option>
-                    <option value="guam">GU</option>
-                    <option value="hawaii">HI</option>
-                    <option value="idaho">ID</option>
-                    <option value="illinois">IL</option>
-                    <option value="iowa">IA</option>
-                    <option value="kansas">KS</option>
-                    <option value="kentucky">KY</option>
-                    <option value="louisiana">LA</option>
-                    <option value="maine">ME</option>
-                    <option value="maryland">MD</option>
-                    <option value="massachusetts">MA</option>
-                    <option value="michigan">MI</option>
-                    <option value="minnesota">MN</option>
-                    <option value="mississippi">MS</option>
-                    <option value="missouri">MO</option>
-                    <option value="montana">MT</option>
-                    <option value="nebraska">NE</option>
-                    <option value="nevada">NV</option>
-                    <option value="new+hampshire">NH</option>
-                    <option value="new+jersey">NJ</option>
-                    <option value="new+mexico">NM</option>
-                    <option value="new+york">NY</option>
-                    <option value="north+carolina">NC</option>
-                    <option value="north+dakota">ND</option>
-                    <option value="ohio">OH</option>
-                    <option value="oklahoma">OK</option>
-                    <option value="oregon">OR</option>
-                    <option value="pennsylvania">PA</option>
-                    <option value="puerto+rico">PR</option>
-                    <option value="rhode-island">RI</option>
-                    <option value="south+carolina">SC</option>
-                    <option value="south+dakota">SD</option>
-                    <option value="tennesee">TN</option>
-                    <option value="texas">TX</option>
-                    <option value="utah">UT</option>
-                    <option value="vermont">VT</option>
-                    <option value="virgin+islands">VI</option>
-                    <option value="virginia">VA</option>
-                    <option value="washington">WA</option>
-                    <option value="west+virginia">WV</option>
-                    <option value="wisconsin">WI</option>
-                    <option value="wyoming">WY</option>
-                </select>
-
-                <button id="search-location" class="btn btn-light">Search</button>
-                
-                <h2>OR Search by Current Location</h2>
-                
-                <button id="current-location" class="btn btn-light">Locate</button>
-            </div>  
-        </div>
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-6 colp">
-            <div id="moon-target"><h1 id="0" class="remove">Waxing Gibbous</h1><img src="file:///Users/God/Desktop/classgit/ClassProject/imgs/moonPhases/waxing91.png" class="remove"><h4 id="0" class="remove">Visibility: 91%</h4><h3 id="0" class="remove">Sunrise: 6:48AM</h3><h3 id="0" class="remove">Sunset: 7:57PM</h3><h3 id="0" class="remove">Moonrise: 6:08PM</h3><h3 id="0" class="remove">Moonset: 5:59AM</h3></div>
         </div>
         
-        <div class="col-lg-6 col-md-6 col-sm-6 col-6 colp">
-            <div id="weather-target"><h3 id="2" class="remove">Overcast Clouds</h3><img src="./Document_files/04d.png" class="remove"><h4 class="remove">Humidity: 43%</h4><h4 class="remove">Wind: 9 Miles Per Hour</h4></div>
+
+        <div class="row">
+            <div class="col-lg-12 colp">
+                <div id="apod-description"></div>
+            </div>
+        </div>
+        <!-- <div class="container-fluid"> -->
+            <div class="row form-group">
+                <div class="col-12 formStyle">  
+                <div class=“card”>
+                        <div class=“card-header”>
+                            <h3 id="search-header">Search Your Location Here:</h3>
+                        </div>
+                        <div class=“card-body”>
+                          <blockquote class="blockquote mb-0">
+                                <input type="text" class="form-control" id="city-input" placeholder="City">
+                                <select class="form-control" id="state-select" placeholder="Select State">
+                                        <option value="alabama">AL</option>
+                                        <option value="alaska">AK</option>
+                                        <option value="arizona">AZ</option>
+                                        <option value="arkansas">AR</option>
+                                        <option value="california">CA</option>
+                                        <option value="colorado">CO</option>
+                                        <option value="connecticut">CT</option>
+                                        <option value="delaware">DE</option>
+                                        <option value="district+of+columbia">DC</option>
+                                        <option value="florida">FL</option>
+                                        <option value="georgia">GA</option>
+                                        <option value="guam">GU</option>
+                                        <option value="hawaii">HI</option>
+                                        <option value="idaho">ID</option>
+                                        <option value="illinois">IL</option>
+                                        <option value="iowa">IA</option>
+                                        <option value="kansas">KS</option>
+                                        <option value="kentucky">KY</option>
+                                        <option value="louisiana">LA</option>
+                                        <option value="maine">ME</option>
+                                        <option value="maryland">MD</option>
+                                        <option value="massachusetts">MA</option>
+                                        <option value="michigan">MI</option>
+                                        <option value="minnesota">MN</option>
+                                        <option value="mississippi">MS</option>
+                                        <option value="missouri">MO</option>
+                                        <option value="montana">MT</option>
+                                        <option value="nebraska">NE</option>
+                                        <option value="nevada">NV</option>
+                                        <option value="new+hampshire">NH</option>
+                                        <option value="new+jersey">NJ</option>
+                                        <option value="new+mexico">NM</option>
+                                        <option value="new+york">NY</option>
+                                        <option value="north+carolina">NC</option>
+                                        <option value="north+dakota">ND</option>
+                                        <option value="ohio">OH</option>
+                                        <option value="oklahoma">OK</option>
+                                        <option value="oregon">OR</option>
+                                        <option value="pennsylvania">PA</option>
+                                        <option value="puerto+rico">PR</option>
+                                        <option value="rhode-island">RI</option>
+                                        <option value="south+carolina">SC</option>
+                                        <option value="south+dakota">SD</option>
+                                        <option value="tennesee">TN</option>
+                                        <option value="texas">TX</option>
+                                        <option value="utah">UT</option>
+                                        <option value="vermont">VT</option>
+                                        <option value="virgin+islands">VI</option>
+                                        <option value="virginia">VA</option>
+                                        <option value="washington">WA</option>
+                                        <option value="west+virginia">WV</option>
+                                        <option value="wisconsin">WI</option>
+                                        <option value="wyoming">WY</option>
+                                </select>
+                                <button id="search-location" class="btn btn-light">Search</button>                
+                            <h3>OR Search by Current Location</h3>
+                            <button id="current-location" class="btn btn-light">Locate</button>
+                            <p></p>
+                          </blockquote>
+                        </div>
+                       </div>
+                </div>
+            </div>
+        <!-- </div> -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="page-holder">
+                <p id="page-index"></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+            <div id="moon-target">
+            </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+            <div id="weather-target">
+            </div>
         </div>
     </div>
     <div class="row">
@@ -184,51 +230,49 @@
             <div class="holder"><button id="previous">Previous</button>
                 <button id="next">Next</button>
             </div>
-            <div id="page-holder">
-                <p id="page-index"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="map-header-div"> 
+                <h3 id="iss-header">Current Location of the International Space Station</h3>    
+            </div>  
+        </div>
+    </div>
+    <div class="row map-border">
+        <div class="col-lg-12 col-md-12 colp">
+            <div id="map-div">
+                <div id="map"></div>  
             </div>
         </div>
     </div>
-    <!-- </div>   -->
-    <!-- <div class="container-fluid"> -->
-        <div class="row">
-            <div class="col-lg-5">
-                <div id="map" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="position: relative;">
-                    <div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-555px, -88px, 0px);">
-                        <div class="leaflet-pane leaflet-tile-pane">
-                            <div class="leaflet-layer " style="z-index: 1; opacity: 1;">
-                                <div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 16; transform: translate3d(641px, 195px, 0px) scale(0.25);">
-                                </div>
-            </div>
-            </div>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-lg-5">
-                <H3>Current Location of the International Space Station</H3>
-                <div id="map"></div>
-            </div>
-            <div class="col-lg-7">
-                <div id="pass-info"></div>
-        </div>
 
+    <div class="row"></div>
+        <div class="col-lg-12 col-md-12 pass-info">
+            <div id="pass-info"></div>
+        </div>
+    </div>
 
 
 
 
 <!-- Footer-->
-        <div id="footer" class="container">
-            <h6 id="copyright"><img src="assets/moon.gif" class="img-fluid" style="height: 200px"> <br>
-                Created By: Heath, Lara and Courtney | 2019</h6>
-        </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="moon-gif"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="footer" class="col-12 ">
+                    <h6 id="copyright">Created By: Heath, Lara and Courtney | 2019</h6>
+                </div>
+            </div>
 
 <!--jQuery Link-->
 <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
 integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
 crossorigin=""></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="config.js"></script>
 <script src="logic.js"></script>
 </body>
 </html>
