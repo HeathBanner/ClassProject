@@ -1,4 +1,5 @@
 
+
 var nasaKey = config.nasaKey;
 var mapboxKey = config.mapboxKey;
 var weatherID = config.weatherID;
@@ -9,12 +10,20 @@ var passID = config.passID;
 firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
+
+//Forecast Storage
 var moonList = []
 var weatherList = []
+
+//Coordinates
 var latitude;
 var longitude;
+
+//Scrolling Forecast
 var currentPage = 0
 var chatLogCount = 0
+
+//Chat Box
 var chatLog = []
 var users = []
 
@@ -33,14 +42,26 @@ database.ref('chatLog').update({
 
 function getAPOD() {
     $.getJSON('https://api.nasa.gov/planetary/apod?api_key=' + nasaKey, function (data) {
-        $("#apod").append("<img id='apod-image'>");
-        $("#apod-image").attr("src", data.url)
-        $("#apod").append("<p>" + data.explanation + "<p>")
-    });
+        console.log(data)
+        
+        $("#apod").attr("class", 'apod-image')
+
+        $("#apod").append('<img src="' + data.url + '" id="apod-img">')
+        
+        var apodDesc = $('<p id="apodDesc"></p>')
+        apodDesc.text(data.explanation)
+
+        var apodBtn = $('<button id="apodDescBtn">More Info</button>')
+        $("#apod").append(apodBtn)
+        $("#apod-description").append(apodDesc)
+    })
 };
 
 getAPOD();
 
+$(document).ready($(document).on("click", "#apodDescBtn", function() {
+   $("#apodDesc").toggle()
+}))
 
 function setISS() {
     $.getJSON('https://api.wheretheiss.at/v1/satellites/25544', function (data) {
@@ -80,6 +101,9 @@ $(document).ready($(document).on("click", "#submitLogin", function () {
     });
     $("#loginInput").remove();
     $("#submitLogin").remove();
+    $("#chatDiv").css({
+        display: 'block',
+    })
 }));
 
 database.ref('users').on('child_added', function (data) {
@@ -97,6 +121,7 @@ $(document).ready($(document).on("click", "#chatSubmit", function () {
             [children]: localStorage.getItem('user') + ": " + input
         });
     });
+    $("#chatInput").val('')
 }));
 
 
@@ -119,12 +144,17 @@ database.ref('chatLog').on('child_added', function (data) {
 
 $(document).ready($(document).on("click", "#current-location", function () {
     event.preventDefault();
+
+    $(".remove-iss-info").remove()
+    $("#moon-target").append('<img src"assets/moon.gif" class="removeGif"')
+    $("#moon-target").append('<img src"assets/moon.gif" class="removeGif"')
+
     navigator.geolocation.getCurrentPosition(function (data) {
         latitude = data.coords.latitude;
         longitude = data.coords.longitude;
 
         $.ajax({
-            url: "https://weather.api.here.com/weather/1.0/report.json?app_id=" + weatherID + "&app_code=" + weatherCode + "&product=forecast_astronomy&latitude=" + latitude + "&longitude=" + longitude + "&jsoncallback=myCallbackFunction",
+            url: "https://weather.api.here.com/weather/1.0/report.json?app_id=" + weatherID +  "&app_code=" + weatherCode + "&product=forecast_astronomy&latitude=" + latitude + "&longitude=" + longitude + "&jsoncallback=myCallbackFunction",
             method: "GET",
             dataType: "jsonp",
             jsonpCallback: 'myCallbackFunction',
@@ -165,6 +195,23 @@ $(document).ready($(document).on("click", "#current-location", function () {
                     moonset: moonset,
                 };
             };
+            $(".removeGif").remove()
+            $("#moon-target").css({
+                display: 'block',
+            })
+
+            $("#weather-target").css({
+                display: 'block',
+            })
+
+            $("#next").css({
+                visibility: 'visible'
+            })
+
+            $("#previous").css({
+                visibility: 'visible'
+            })
+
             $("#moon-target").append(moonList[0].astroForecastDesc);
             $("#moon-target").append(moonList[0].astroForecastIcon);
             $("#moon-target").append(moonList[0].visibility);
@@ -225,9 +272,6 @@ $(document).ready($(document).on("click", "#current-location", function () {
             $("#page-index").text(weatherList[0].date);
         });
 
-        navigator.geolocation.getCurrentPosition(function (dat) {
-            latitude = dat.coords.latitude;
-            longitude = dat.coords.longitude;
             $.getJSON('https://nominatim.openstreetmap.org/reverse?format=json&lat=' + latitude + '&lon=' + longitude, function (d) {
                 var passLocation = $("<h3>").text("Over the next 10 days The International Space Station will be viewable from " + d.address.city + ", " + d.address.state + " at the following times:");
                 $("#pass-info").prepend(passLocation);
@@ -241,17 +285,22 @@ $(document).ready($(document).on("click", "#current-location", function () {
                     data['passes'].forEach(function (pass) {
                         var timeStamp = pass['startUTC'];
                         var passTime = moment.unix(timeStamp).format('dddd, MMMM Do YYYY, h:mm ha z');
-                        $("#pass-info").append("<li>" + passTime + " for a duration of " + pass['duration'] + " seconds, starting in the " + pass['startAzCompass'] + " and moving toward " + pass['endAzCompass'] + "</li>");
+                        $("#pass-info").append("<li class='remove-iss-info list-info'>" + passTime + " for a duration of " + pass['duration'] + " seconds, starting in the " + pass['startAzCompass'] + " and moving toward " + pass['endAzCompass'] + "</li>");
                     });
                 };
             });
-        });
+        
     });
 }));
 
 $(document).ready($(document).on("click", "#search-location", function () {
     event.preventDefault();
-    var city = $("#city-input").val().trim();
+
+    $(".remove-iss-info").remove()
+    $("#moon-target").append('<img src"assets/moon.gif" class="removeGif"')
+    $("#moon-target").append('<img src"assets/moon.gif" class="removeGif"')
+
+    var city = $("#city").val().trim();
     city.toString();
     var newNewStr = city;
     newNewStr = newNewStr.replace(/\s/g, "+");
@@ -260,7 +309,7 @@ $(document).ready($(document).on("click", "#search-location", function () {
         latitude = data["0"].lat;
         longitude = data["0"].lon;
         $.ajax({
-            url: "https://weather.api.here.com/weather/1.0/report.json?app_id=" + weatherID + "&app_code=" + weatherCode + "&product=forecast_astronomy&latitude=" + latitude + "&longitude=" + longitude + "&jsoncallback=myCallbackFunction",
+            url: "https://weather.api.here.com/weather/1.0/report.json?app_id=" + weatherID +  "&app_code=" + weatherCode + "&product=forecast_astronomy&latitude=" + latitude + "&longitude=" + longitude + "&jsoncallback=myCallbackFunction",
             method: "GET",
             dataType: "jsonp",
             jsonpCallback: 'myCallbackFunction',
@@ -293,6 +342,23 @@ $(document).ready($(document).on("click", "#search-location", function () {
                     moonset: moonset,
                 };
             };
+            $(".removeGif").remove()
+            $("#moon-target").css({
+                display: 'block',
+            })
+
+            $("#weather-target").css({
+                display: 'block',
+            })
+            
+            $("#next").css({
+                visibility: 'visible'
+            })
+
+            $("#previous").css({
+                visibility: 'visible'
+            })
+
             $("#moon-target").append(moonList[0].astroForecastDesc);
             $("#moon-target").append(moonList[0].visibility);
             $("#moon-target").append(moonList[0].sunrise);
