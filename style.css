@@ -1,14 +1,11 @@
-
 #map {
-    height: 200px;
-    width: 300px;
+    height: 400px;
+    width: 500px;
 }
 
-nav {
-    background: white;
+navName {
+    color: #350e60;
 }
-
-  
 
 #chatbox {
     position: absolute;
@@ -64,8 +61,6 @@ nav {
 #current-location {
     margin: 20px;
 }
-
-
 
 .invis {
     display: none;
