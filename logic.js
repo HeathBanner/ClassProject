@@ -1,12 +1,20 @@
-
-var config = {
+var firebaseConfig = {
     apiKey: "AIzaSyAJS4YQWU5DmESeYueG1qH1NGkjv3DncEY",
     authDomain: "https://classwork-f3f0e.firebaseio.com/",
     databaseURL: "https://classwork-f3f0e.firebaseio.com/",
     storageBucket: "https://classwork-f3f0e.firebaseio.com/"
 };
 
-firebase.initializeApp(config);
+var config = {
+    nasaKey: "O4apkZjxNa6ai9nraTM6Ya5gyCAxuqMrZWupmr9D",
+    mapboxKey: "pk.eyJ1IjoibGFyYS1lIiwiYSI6ImNqdWlscnl2YjE4a2Y0NHBpb21mZ2lsdmQifQ.bHWgEb4G4BLPbjEMAcEwTA",
+    weatherID: "DxBU79ocPu6mVtMHuij8",
+    weatherCode: "IJhvDA9iMZjliA8otkgGag",
+    openWeatherId: "4216d1350fe31af9bf5100bb34fa72e2",
+    passesID: "V8E8EU-AUXGFV-KZ28S2-3ZJ0"
+}
+
+firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 var moonList = []
@@ -32,7 +40,7 @@ database.ref('chatLog').update({
 });
 
 function getAPOD() {
-    $.getJSON('https://api.nasa.gov/planetary/apod?api_key=O4apkZjxNa6ai9nraTM6Ya5gyCAxuqMrZWupmr9D ', function (data) {
+    $.getJSON('https://api.nasa.gov/planetary/apod?api_key=' + nasaKey, function (data) {
         console.log(data)
         $("#apod").append("<img id='apod-image'>");
         $("#apod-image").attr("src", data.url)
@@ -41,6 +49,7 @@ function getAPOD() {
 };
 
 getAPOD();
+
 
 function setISS() {
     $.getJSON('https://api.wheretheiss.at/v1/satellites/25544', function (data) {
@@ -52,13 +61,12 @@ function setISS() {
     setTimeout(setISS, 5000);
 };
 
-function renderMap() {
     var map = L.map('map', { zoomControl: false }).setView([0, 0], 2);
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibGFyYS1lIiwiYSI6ImNqdWlscnl2YjE4a2Y0NHBpb21mZ2lsdmQifQ.bHWgEb4G4BLPbjEMAcEwTA', {
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapboxKey, {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
         id: 'mapbox.satellite',
-        accessToken: 'pk.eyJ1IjoibGFyYS1lIiwiYSI6ImNqdWlscnl2YjE4a2Y0NHBpb21mZ2lsdmQifQ.bHWgEb4G4BLPbjEMAcEwTA'
+        accessToken: mapboxKey
     }).addTo(map);
 
     var issIcon = L.icon({
@@ -67,10 +75,11 @@ function renderMap() {
         iconAnchor: [25, 40], // point of the icon which will correspond to marker's location
     });
     var iss = L.marker([0, 0], { icon: issIcon }).addTo(map);
-    setISS();
-};
 
-renderMap();
+    setISS();
+
+
+
 
 $(document).ready($(document).on("click", "#submitLogin", function () {
     login = $("#loginInput").val().trim();
@@ -117,15 +126,14 @@ database.ref('chatLog').on('child_added', function (data) {
     });
 });
 
-$(document).on("click", "#current-location", function () {
+$(document).ready($(document).on("click", "#current-location", function () {
     event.preventDefault();
-
     navigator.geolocation.getCurrentPosition(function (data) {
         latitude = data.coords.latitude;
         longitude = data.coords.longitude;
 
         $.ajax({
-            url: "https://weather.api.here.com/weather/1.0/report.json?app_id=DxBU79ocPu6mVtMHuij8&app_code=IJhvDA9iMZjliA8otkgGag&product=forecast_astronomy&latitude=" + latitude + "&longitude=" + longitude + "&jsoncallback=myCallbackFunction",
+            url: "https://weather.api.here.com/weather/1.0/report.json?app_id=" + weatherID + "&app_code=" + weatherCode + "&product=forecast_astronomy&latitude=" + latitude + "&longitude=" + longitude + "&jsoncallback=myCallbackFunction",
             method: "GET",
             dataType: "jsonp",
             jsonpCallback: 'myCallbackFunction',
@@ -176,7 +184,7 @@ $(document).on("click", "#current-location", function () {
         });
 
         $.ajax({
-            url: 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&APPID=4216d1350fe31af9bf5100bb34fa72e2',
+            url: 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&APPID=' + openWeatherID,
             method: "GET",
         }).then(function (response) {
             divCount = 0
@@ -230,11 +238,11 @@ $(document).on("click", "#current-location", function () {
             latitude = dat.coords.latitude;
             longitude = dat.coords.longitude;
             $.getJSON('https://nominatim.openstreetmap.org/reverse?format=json&lat=' + latitude + '&lon=' + longitude, function (d) {
-                var passLocation = $("<h3>").text("Over the next 10 days The International Space Station will be viewable from " + d.address.city + ", " + d.address.state + " at the following times:");
+                var passLocation = $("<h3 class='remove>").text("Over the next 10 days The International Space Station will be viewable from " + d.address.city + ", " + d.address.state + " at the following times:");
                 $("#pass-info").prepend(passLocation);
                 $("#pass-info").append("<br>");
             });
-            $.getJSON('https://www.n2yo.com/rest/v1/satellite/visualpasses/25544/' + latitude + '/' + longitude + '/0/10/60/&apiKey=V8E8EU-AUXGFV-KZ28S2-3ZJ0', function (data) {
+            $.getJSON('https://www.n2yo.com/rest/v1/satellite/visualpasses/25544/' + latitude + '/' + longitude + '/0/10/60/&apiKey=' + passesId, function (data) {
                 if (data.info.passescount === 0) {
                     $("#pass-info").append("<p>Sorry no ISS passes for this location in the next 10 days<p>");
                 }
@@ -242,15 +250,15 @@ $(document).on("click", "#current-location", function () {
                     data['passes'].forEach(function (pass) {
                         var timeStamp = pass['startUTC'];
                         var passTime = moment.unix(timeStamp).format('dddd, MMMM Do YYYY, h:mm ha z');
-                        $("#pass-info").append("<li>" + passTime + " for a duration of " + pass['duration'] + " seconds, starting in the " + pass['startAzCompass'] + " and moving toward " + pass['endAzCompass'] + "</li>");
+                        $("#pass-info").append("<li class='remove'>" + passTime + " for a duration of " + pass['duration'] + " seconds, starting in the " + pass['startAzCompass'] + " and moving toward " + pass['endAzCompass'] + "</li>");
                     });
                 };
             });
         });
     });
-});
+}));
 
-$(document).on("click", "#search-location", function () {
+$(document).ready($(document).on("click", "#search-location", function () {
     event.preventDefault();
     var city = $("#city").val().trim();
     city.toString();
@@ -261,7 +269,7 @@ $(document).on("click", "#search-location", function () {
         latitude = data["0"].lat;
         longitude = data["0"].lon;
         $.ajax({
-            url: "https://weather.api.here.com/weather/1.0/report.json?app_id=DxBU79ocPu6mVtMHuij8&app_code=IJhvDA9iMZjliA8otkgGag&product=forecast_astronomy&latitude=" + latitude + "&longitude=" + longitude + "&jsoncallback=myCallbackFunction",
+            url: "https://weather.api.here.com/weather/1.0/report.json?app_id=" + weatherID + "&app_code=" + weatherCode + "&product=forecast_astronomy&latitude=" + latitude + "&longitude=" + longitude + "&jsoncallback=myCallbackFunction",
             method: "GET",
             dataType: "jsonp",
             jsonpCallback: 'myCallbackFunction',
@@ -303,7 +311,7 @@ $(document).on("click", "#search-location", function () {
         });
 
         $.ajax({
-            url: 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&APPID=4216d1350fe31af9bf5100bb34fa72e2',
+            url: 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&APPID=' + openWeatherID,
             method: "GET",
         }).then(function (response) {
             divCount = 0;
@@ -356,7 +364,7 @@ $(document).on("click", "#search-location", function () {
                 $("#pass-info").prepend(passLocation);
                 $("#pass-info").append("<br>")
             })
-            $.getJSON('https://www.n2yo.com/rest/v1/satellite/visualpasses/25544/' + latitude + '/' + longitude + '/0/10/60/&apiKey=V8E8EU-AUXGFV-KZ28S2-3ZJ0', function (data) {
+            $.getJSON('https://www.n2yo.com/rest/v1/satellite/visualpasses/25544/' + latitude + '/' + longitude + '/0/10/60/&apiKey=' + passesId, function (data) {
                 if (data.info.passescount === 0) {
                     $("#pass-info").append("<p>Sorry no ISS passes for this location in the next 10 days<p>");
                 }
@@ -370,7 +378,7 @@ $(document).on("click", "#search-location", function () {
             });
         });
     });
-});
+}));
 
 $(document).on("click", "#next", function () {
     $(".remove").remove();

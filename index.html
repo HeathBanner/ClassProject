@@ -178,7 +178,7 @@
                 <div id="weather-target"><h3 id="2" class="remove">Overcast Clouds</h3><img src="./Document_files/04d.png" class="remove"><h4 class="remove">Humidity: 43%</h4><h4 class="remove">Wind: 9 Miles Per Hour</h4></div>
             </div>
             <div class="col-lg-6">
-                <div id="moon-target"><h1 id="0" class="remove">Waxing Gibbous</h1><img src="file:///Users/God/Desktop/classgit/ClassProject/imgs/moonPhases/waxing91.png" class="remove"><h4 id="0" class="remove">Visibility: 91%</h4><h3 id="0" class="remove">Sunrise: 6:48AM</h3><h3 id="0" class="remove">Sunset: 7:57PM</h3><h3 id="0" class="remove">Moonrise: 6:08PM</h3><h3 id="0" class="remove">Moonset: 5:59AM</h3></div>
+                <div id="moon-target"><h1 id="0" class="remove">Waxing Gibbous</h1><img src="./imgs/moonPhases/waxing91.png" class="remove"><h4 id="0" class="remove">Visibility: 91%</h4><h3 id="0" class="remove">Sunrise: 6:48AM</h3><h3 id="0" class="remove">Sunset: 7:57PM</h3><h3 id="0" class="remove">Moonrise: 6:08PM</h3><h3 id="0" class="remove">Moonset: 5:59AM</h3></div>
             </div>
         </div>
         <div class="col-8">
@@ -234,11 +234,11 @@
         
         <div class="row">
             <div class="col-lg-5">
-                <div id="map" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="position: relative;"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-555px, -88px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 16; transform: translate3d(641px, 195px, 0px) scale(0.25);"></div><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 17; transform: translate3d(641px, 195px, 0px) scale(0.5);"></div><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(427px, 149px, 0px) scale(1);"><img alt="" role="presentation" src="./Document_files/0.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-108px, -32px, 0px); opacity: 1;"><img alt="" role="presentation" src="./Document_files/0.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(148px, -32px, 0px); opacity: 1;"><img alt="" role="presentation" src="./Document_files/0.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(404px, -32px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-marker-pane"><img src="file:///Users/God/Desktop/classgit/ClassProject/imgs/ISSIcon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -25px; margin-top: -40px; width: 38px; height: 95px; transform: translate3d(805px, 288px, 0px); z-index: 288;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(230px, 171px, 0px) scale(0.5);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="http://leafletjs.com/" title="A JS library for interactive maps">Leaflet</a> | Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a></div></div></div></div>
+                <H3>Current Location of the International Space Station</H3>
+                <div id="map"></div>
             </div>
             <div class="col-lg-7">
-                <div id="pass-info"><h3>Over the next 10 days The International Space Station will be viewable from your location at the following times:</h3><br><li>Tuesday, April 23rd 2019, 6:33 AM for a duration of 550 seconds, starting in the S and moving toward ENE</li><li>Thursday, April 25th 2019, 6:28 AM for a duration of 625 seconds, starting in the SW and moving toward NE</li><li>Friday, April 26th 2019, 5:37 AM for a duration of 495 seconds, starting in the SSW and moving toward ENE</li><li>Saturday, April 27th 2019, 4:47 AM for a duration of 320 seconds, starting in the S and moving toward ENE</li><li>Saturday, April 27th 2019, 6:22 AM for a duration of 590 seconds, starting in the SW and moving toward NE</li></div>
-            </div>
+                <div id="pass-info"></div>
         </div>
         
 <div class="issMap">
@@ -262,7 +262,9 @@
 <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
 integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
 crossorigin=""></script>
+<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="config.js"></script>
 <script src="logic.js"></script>
 </body>
 </html>
