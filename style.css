@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body {
     /* background-image: url(imgs/wall.png); */
     background: black;
@@ -91,21 +90,6 @@ header {
     min-width: 250px;
     margin: 10px 10px;
     padding: 10px;
-=======
-#map {
-    height: 400px;
-    width: 500px;
-}
-
-navName {
-    color: #350e60;
-}
-
-#chatbox {
-    position: absolute;
-    top: 100px;
-    right: 40px; 
->>>>>>> 5997fb61f9eaf027b862e1187dd9cae83947ee9c
 }
 
 #chatInputDiv {
@@ -239,11 +223,7 @@ navName {
     margin: 20px;
 }
 
-<<<<<<< HEAD
 #moon-target {
-=======
-.invis {
->>>>>>> 5997fb61f9eaf027b862e1187dd9cae83947ee9c
     display: none;
     background: white;;
     color: black;

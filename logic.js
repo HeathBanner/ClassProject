@@ -1,5 +1,4 @@
 
-var firebaseConfig = config.firebaseConfig
 
 var nasaKey = config.nasaKey;
 var mapboxKey = config.mapboxKey;
