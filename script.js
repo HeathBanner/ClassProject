@@ -1,3 +1,4 @@
+// NOTE: this script.js is for the contact page only!
 $(document).ready(function() {
     var config = {
         apiKey: "AIzaSyDkgxPmixwa3I9MTW-TuWkQZvBEqgbr1vE",
