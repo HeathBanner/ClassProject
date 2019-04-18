@@ -145,13 +145,12 @@ database.ref('chatLog').on('child_added', function (data) {
 $(document).ready($(document).on("click", "#current-location", function () {
     event.preventDefault();
 
-    $(".remove-iss-info").remove()
-    $("#moon-target").append('<img src"assets/moon.gif" class="removeGif"')
-    $("#moon-target").append('<img src"assets/moon.gif" class="removeGif"')
-
     navigator.geolocation.getCurrentPosition(function (data) {
         latitude = data.coords.latitude;
         longitude = data.coords.longitude;
+
+        $(".remove-iss-info").remove()
+        $(".remove").remove()    
 
         $.ajax({
             url: "https://weather.api.here.com/weather/1.0/report.json?app_id=" + weatherID +  "&app_code=" + weatherCode + "&product=forecast_astronomy&latitude=" + latitude + "&longitude=" + longitude + "&jsoncallback=myCallbackFunction",
@@ -168,16 +167,19 @@ $(document).ready($(document).on("click", "#current-location", function () {
                 description = description.split(' ');
                 description[1] = description[1].charAt(0).toUpperCase() + description[1].slice(1);
                 description = description.join(' ');
-                var astroForecastDesc = $('<h1 id=' + i + 'class="remove">' + description + '</h1>');
+                                
                 var visibilityFloat;
                 visibilityFloat = parseInt(response.astronomy.astronomy[i].moonPhase * 100);
                 newVis = visibilityFloat.toString();
                 if (newVis[0] == '-') {
                     visibilityFloat = parseInt(visibilityFloat) * -1;
                 };
+                
                 var rawName = response.astronomy.astronomy[i].moonPhaseDesc;
                 rawName = rawName.split(' ');
                 var imgName = rawName[0].toLowerCase();
+
+                var astroForecastDesc = $('<h1 id="' + i + '" class="remove">' + description + '</h1>');
                 var astroForecastIcon = $('<img src="imgs/moonPhases/' + imgName + visibilityFloat + '.png" class="remove">')
                 var visibility = $('<h4 id="' + i + '" class="remove">Visibility: ' + visibilityFloat + '%</h4>');
                 var sunrise = $('<h3 id="' + i + '" class="remove">Sunrise: ' + response.astronomy.astronomy[i].sunrise + '</h3>');
@@ -195,7 +197,6 @@ $(document).ready($(document).on("click", "#current-location", function () {
                     moonset: moonset,
                 };
             };
-            $(".removeGif").remove()
             $("#moon-target").css({
                 display: 'block',
             })
@@ -247,6 +248,7 @@ $(document).ready($(document).on("click", "#current-location", function () {
                         description[j] = description[j].charAt(0).toUpperCase() + description[j].slice(1);
                     };
                     description = description.join(' ');
+                    
                     var weatherDesc = $('<h3 id="' + i + '" class="remove">' + description + '</h3>');
                     var icon = $('<img src="https://openweathermap.org/img/w/' + response.list[i].weather[0].icon + '.png" class="remove">')
                     var humidity = $('<h4 class="remove">Humidity: ' + response.list[i].main.humidity + '%</h4>');
@@ -297,10 +299,11 @@ $(document).ready($(document).on("click", "#search-location", function () {
     event.preventDefault();
 
     $(".remove-iss-info").remove()
+    $(".remove").remove()
     $("#moon-target").append('<img src"assets/moon.gif" class="removeGif"')
     $("#moon-target").append('<img src"assets/moon.gif" class="removeGif"')
 
-    var city = $("#city").val().trim();
+    var city = $("#city-input").val().trim();
     city.toString();
     var newNewStr = city;
     newNewStr = newNewStr.replace(/\s/g, "+");
@@ -321,12 +324,21 @@ $(document).ready($(document).on("click", "#search-location", function () {
                 description = description.split(' ');
                 description[1] = description[1].charAt(0).toUpperCase() + description[1].slice(1);
                 description = description.join(' ');
+                
                 var astroForecastDesc = $('<h1 id="' + i + '" class="remove">' + description + '</h1>');
-                var visibilityFloat = 0;
+                
+                var visibilityFloat;
                 visibilityFloat = parseInt(response.astronomy.astronomy[i].moonPhase * 100);
-                if (visibilityFloat[0] == '-') {
+                newVis = visibilityFloat.toString();
+                if (newVis[0] == '-') {
                     visibilityFloat = parseInt(visibilityFloat) * -1;
                 };
+
+                var rawName = response.astronomy.astronomy[i].moonPhaseDesc;
+                rawName = rawName.split(' ');
+                var imgName = rawName[0].toLowerCase();
+                
+                var astroForecastIcon = $('<img src="imgs/moonPhases/' + imgName + visibilityFloat + '.png" class="remove">')
                 var visibility = $('<h4 id="' + i + '" class="remove">Visibility: ' + visibilityFloat + '%</h4>');
                 var sunrise = $('<h3 id="' + i + '" class="remove">Sunrise: ' + response.astronomy.astronomy[i].sunrise + '</h3>');
                 var moonrise = $('<h3 id="' + i + '" class="remove">Moonrise: ' + response.astronomy.astronomy[i].moonrise + '</h3>');
@@ -335,6 +347,7 @@ $(document).ready($(document).on("click", "#search-location", function () {
 
                 moonList[i] = {
                     astroForecastDesc: astroForecastDesc,
+                    astroForecastIcon: astroForecastIcon,
                     visibility: visibility,
                     sunrise: sunrise,
                     sunset: sunset,
@@ -360,6 +373,7 @@ $(document).ready($(document).on("click", "#search-location", function () {
             })
 
             $("#moon-target").append(moonList[0].astroForecastDesc);
+            $("#moon-target").append(moonList[0].astroForecastIcon);
             $("#moon-target").append(moonList[0].visibility);
             $("#moon-target").append(moonList[0].sunrise);
             $("#moon-target").append(moonList[0].sunset);
@@ -391,7 +405,7 @@ $(document).ready($(document).on("click", "#search-location", function () {
                         description[j] = description[j].charAt(0).toUpperCase() + description[j].slice(1);
                     };
                     description = description.join(' ');
-                    var weatherDesc = $('<h3 id=' + i + 'class="remove">' + description + '</h3>');
+                    var weatherDesc = $('<h3 id="' + i + '" class="remove">' + description + '</h3>');
                     var icon = $('<img src="https://openweathermap.org/img/w/' + response.list[i].weather[0].icon + '.png" class="remove">');
                     var humidity = $('<h4 class="remove">Humidity: ' + response.list[i].main.humidity + '%</h4>');
                     windSpeed = parseInt(response.list[i].wind.speed * 2.237);
@@ -448,10 +462,12 @@ $(document).on("click", "#next", function () {
         $("#moon-target").append(moonList[currentPage].sunset);
         $("#moon-target").append(moonList[currentPage].moonrise);
         $("#moon-target").append(moonList[currentPage].moonset);
+        
         $("#weather-target").append(weatherList[currentPage].weatherDesc);
         $("#weather-target").append(weatherList[currentPage].icon);
         $("#weather-target").append(weatherList[currentPage].humidity);
         $("#weather-target").append(weatherList[currentPage].wind);
+        
         $("#page-index").text(weatherList[currentPage].date);
     };
     if (currentPage == 4) {
@@ -478,10 +494,12 @@ $(document).on("click", "#previous", function () {
         $("#moon-target").append(moonList[currentPage].sunset);
         $("#moon-target").append(moonList[currentPage].moonrise);
         $("#moon-target").append(moonList[currentPage].moonset);
+        
         $("#weather-target").append(weatherList[currentPage].weatherDesc);
         $("#weather-target").append(weatherList[currentPage].icon);
         $("#weather-target").append(weatherList[currentPage].humidity);
         $("#weather-target").append(weatherList[currentPage].wind);
+        
         $("#page-index").text(weatherList[currentPage].date);
     };
     if (currentPage == 0) {
