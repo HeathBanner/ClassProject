@@ -1,3 +1,7 @@
+/* NOTE: this css is for the about/contact page only! */
+.navName {
+    color: #350e60;
+}
 
 .top { 
     background: url("banner.png") no-repeat center center; 
@@ -11,16 +15,30 @@ body {
     padding: 30px;
     background-color: black;
     opacity: 1;
-    color: white;
+    color: #350e60;
     font-family: 'Orbitron', sans-serif;
     align-content: center;  
-}
-
-.navBar {
-    color: #350e60;
 }
 
 #copyright {
     text-align: center;
     align-content: center;
+    color: white;
+}
+
+.office-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .office-img {
+        background: no-repeat center center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
 }
