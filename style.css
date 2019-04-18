@@ -1,3 +1,97 @@
+<<<<<<< HEAD
+body {
+    /* background-image: url(imgs/wall.png); */
+    background: black;
+    opacity: 1;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.colp {
+    padding: 0px;
+}
+
+.top { 
+    background: black;
+    padding: 20px;
+  }
+
+.clear-right {
+    margin: 0px 0px 60px 0px;
+}
+
+.row {
+    margin: 0px;
+}
+
+.customNav {
+    margin-left: 0px;
+}
+
+ul {
+    padding: 0px;
+    width: 100%;
+    margin: 0px 20px;
+}
+
+.navLi {
+    list-style: none;
+    display: inline-block;
+}
+
+.navLink {
+    padding: 8px;
+}
+
+#home-nav {
+    border-right: solid 0.5px white;
+    padding: 8px 10px
+}
+
+a:link {
+    color: white;
+    font-weight: bold;
+}
+
+a:visited {
+    color: white;
+    font-weight: bold;
+}
+
+a:hover {
+    color: indigo;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#loginDiv {
+    text-align: right;
+    margin: 0px;
+}
+
+header {
+    background: black;  
+}
+
+.chat-bg {
+    background: white;
+}
+
+#chatDiv {
+    display: none;
+    background-image: url(imgs/dark.png);
+    text-align: left;
+    border: 2px solid maroon;
+}
+
+.seatWarmer {
+    display: block;
+    background: rgb(0, 0, 0, 0.3);
+    min-height: 35px;
+    min-width: 250px;
+    margin: 10px 10px;
+    padding: 10px;
+=======
 #map {
     height: 400px;
     width: 500px;
@@ -11,23 +105,56 @@ navName {
     position: absolute;
     top: 100px;
     right: 40px; 
+>>>>>>> 5997fb61f9eaf027b862e1187dd9cae83947ee9c
 }
 
-.clear-moon {
-    background: #666;
+#chatInputDiv {
+    background-image: url(imgs/zwart.png);
+    border-top: solid 2px black;
+    padding: 10px 0px;
 }
 
-#apod {
+#chatInput {
+    width: 80.5%;
+    margin-left: 10px;
+}
+
+#chatSubmit {
+    width: 13.5%;
     text-align: center;
+    /* visibility: hidden; */
 }
 
-.top { 
-    background: url("banner.png") no-repeat center center; 
+.banner-bg {
+    background: url("assets/banner.png") no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: contain;
-  }
+    margin-bottom: 20px;
+}
+
+.clear-moon-body {
+    margin-top: 120px;
+    border-top: 2px solid maroon;
+    border-bottom: 2px solid maroon;
+}
+
+.clear-moon {
+    background-image: url(imgs/zwart.png);
+    padding: 30px;
+    text-align: center;
+}
+
+#moon-body {
+    line-height: 1.5em; 
+}
+  
+#chatbox {
+    position: absolute;
+    top: 100px;
+    right: 40px;
+}
   
 #chatbox {
     position: absolute;
@@ -35,16 +162,66 @@ navName {
     right: 40px;
 }
 
+#apod-header {
+    padding: 10px 0px;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.apod-col {
+    background: black;
+    /* border-top: 2px solid maroon;
+    border-bottom: 2px solid maroon; */
+}
+
 #apod-image {
     width: 100%;
     height: 100%;
 }
 
-.formStyle {
+#apodDesc {
+    display: none;
     text-align: center;
-    display: inline;
-    background: #777;
+    padding: 20px;
+    word-spacing: 1.5;
+    background: black;
+    line-height: 2em;
+}
+
+#apod {
+    text-align: center;
+    /* border: 2px solid maroon; */
+}
+
+#apod-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#apodDescBtn {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+}
+
+.formStyle {
+    margin: 120px 0px 30px 0px;
+    /* padding: 0px; */
+    text-align: center;
+    /* display: inline; */
+    /* background-image: url(imgs/prism.png); */
+    background: black;
+    border-radius: 10px;
 }  
+
+.form-group {
+    margin: 0px 30px;
+}
+
+#search-header {
+    padding: 20px;
+}
 
 #city-input {
     width: 250px;
@@ -62,26 +239,35 @@ navName {
     margin: 20px;
 }
 
+<<<<<<< HEAD
+#moon-target {
+=======
+.invis {
+>>>>>>> 5997fb61f9eaf027b862e1187dd9cae83947ee9c
+    display: none;
+    background: white;;
+    color: black;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#weather-target{
+    display: none;
+    background: white;
+    color: black;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+}
+
 .invis {
     display: none;
 }
-
-.top { 
-    background: url("assets/banner.png") no-repeat center center; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: contain;
-  }
-
-body {
-    padding: 30px;
-    background-color: black;
-    opacity: 1;
-    color: white;
-    font-family: 'Orbitron', sans-serif;
-}
-
 
 #cardWeather {
     color:  #350e60;
@@ -98,8 +284,84 @@ position: absolute;
 padding: 40px;
 }
 
+#iss-header{
+    margin-top: 30px;
+}
+
+.holder {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    min-width: 250px;
+    padding: 20px;
+}
+
+#previous {
+    visibility: hidden;
+    display: inline;
+    margin: 0px 10px;
+    width: 100px;
+    height: 25px;
+}
+
 #next {
     visibility: hidden;
+    display: inline;
+    margin: 0px 10px;
+    width: 100px;
+    height: 25px;
+}
+
+#page-index {
+    text-align: center;
+    font-size: 30px;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+#map-header-div {
+    text-align: center;
+}
+
+#pass-info {
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.pass-info {
+    background: black;
+}
+
+.list-info {
+    line-height: 2.0em;
+}
+
+#moon-gif {
+    background: url("assets/moon.gif") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: contain;
+    height: 200px;
+    /* margin-top: 60px; */
+}
+
+#copyright {
+    text-align: center;
+}
+
+#footer {
+    background: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: contain;
+    padding: 20px;
 }
 
 @media screen and (max-width: 800px) {
@@ -109,8 +371,4 @@ padding: 40px;
     -moz-background-size: cover;
     -o-background-size: cover;
 }
-}
-
-#copyright {
-    text-align: center;
 }
