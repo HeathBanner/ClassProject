@@ -1,10 +1,5 @@
 
-var firebaseConfig = {
-    apiKey: "AIzaSyAJS4YQWU5DmESeYueG1qH1NGkjv3DncEY",
-    authDomain: "https://classwork-f3f0e.firebaseio.com/",
-    databaseURL: "https://classwork-f3f0e.firebaseio.com/",
-    storageBucket: "https://classwork-f3f0e.firebaseio.com/"
-};
+var firebaseConfig = config.firebaseConfig
 
 var nasaKey = config.nasaKey;
 var mapboxKey = config.mapboxKey;
@@ -160,7 +155,7 @@ $(document).ready($(document).on("click", "#current-location", function () {
         longitude = data.coords.longitude;
 
         $.ajax({
-            url: "https://weather.api.here.com/weather/1.0/report.json?app_id=DxBU79ocPu6mVtMHuij8&app_code=IJhvDA9iMZjliA8otkgGag&product=forecast_astronomy&latitude=" + latitude + "&longitude=" + longitude + "&jsoncallback=myCallbackFunction",
+            url: "https://weather.api.here.com/weather/1.0/report.json?app_id=" + weatherID +  "&app_code=" + weatherCode + "&product=forecast_astronomy&latitude=" + latitude + "&longitude=" + longitude + "&jsoncallback=myCallbackFunction",
             method: "GET",
             dataType: "jsonp",
             jsonpCallback: 'myCallbackFunction',
@@ -228,7 +223,7 @@ $(document).ready($(document).on("click", "#current-location", function () {
         });
 
         $.ajax({
-            url: 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&APPID=4216d1350fe31af9bf5100bb34fa72e2',
+            url: 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&APPID=' + openWeatherID,
             method: "GET",
         }).then(function (response) {
             divCount = 0
@@ -315,7 +310,7 @@ $(document).ready($(document).on("click", "#search-location", function () {
         latitude = data["0"].lat;
         longitude = data["0"].lon;
         $.ajax({
-            url: "https://weather.api.here.com/weather/1.0/report.json?app_id=DxBU79ocPu6mVtMHuij8&app_code=IJhvDA9iMZjliA8otkgGag&product=forecast_astronomy&latitude=" + latitude + "&longitude=" + longitude + "&jsoncallback=myCallbackFunction",
+            url: "https://weather.api.here.com/weather/1.0/report.json?app_id=" + weatherID +  "&app_code=" + weatherCode + "&product=forecast_astronomy&latitude=" + latitude + "&longitude=" + longitude + "&jsoncallback=myCallbackFunction",
             method: "GET",
             dataType: "jsonp",
             jsonpCallback: 'myCallbackFunction',
@@ -374,7 +369,7 @@ $(document).ready($(document).on("click", "#search-location", function () {
         });
 
         $.ajax({
-            url: 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&APPID=4216d1350fe31af9bf5100bb34fa72e2',
+            url: 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&APPID=' + openWeatherID,
             method: "GET",
         }).then(function (response) {
             divCount = 0;
