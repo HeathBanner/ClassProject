@@ -1,3 +1,10 @@
+.navName {
+    color: #350e60;
+}
+
+.office-img {
+    background-image: center;
+}
 
 .top { 
     background: url("banner.png") no-repeat center center; 
@@ -11,16 +18,13 @@ body {
     padding: 30px;
     background-color: black;
     opacity: 1;
-    color: white;
+    color: #350e60;
     font-family: 'Orbitron', sans-serif;
     align-content: center;  
-}
-
-.navBar {
-    color: #350e60;
 }
 
 #copyright {
     text-align: center;
     align-content: center;
+    color: white;
 }

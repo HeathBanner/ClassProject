@@ -1,11 +1,6 @@
-
-
-
 nav {
     background: white;
 }
-
-  
 
 #chatbox {
     position: absolute;
@@ -61,8 +56,6 @@ nav {
 #current-location {
     margin: 20px;
 }
-
-
 
 .invis {
     display: none;
