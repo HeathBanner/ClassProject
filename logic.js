@@ -430,7 +430,7 @@ $(document).ready($(document).on("click", "#search-location", function () {
             };
 
             $.getJSON('https://nominatim.openstreetmap.org/reverse?format=json&lat=' + latitude + '&lon=' + longitude, function (d) {
-                var passLocation = $("<h3 class'remove-iss-info'>").text("Over the next 10 days The International Space Station will be viewable from " + d.address.city + ", " + d.address.state + " at the following times:");
+                var passLocation = $("<h3 class='remove-iss-info'>").text("Over the next 10 days The International Space Station will be viewable from " + d.address.city + ", " + d.address.state + " at the following times:");
                 $("#pass-info").prepend(passLocation);
                 $("#pass-info").append("<br>")
             });
