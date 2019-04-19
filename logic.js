@@ -443,7 +443,7 @@ $(document).ready($(document).on("click", "#search-location", function () {
                     data['passes'].forEach(function (pass) {
                         var timeStamp = pass['startUTC'];
                         var passTime = moment.unix(timeStamp).format('dddd, MMMM Do YYYY, h:mm A');
-                        $("#pass-info").append("<li class'remove-iss-info list-info'>" + passTime + " UTC for a duration of " + pass['duration'] + " seconds, starting in the " + pass['startAzCompass'] + " and moving toward " + pass['endAzCompass'] + "</li>")
+                        $("#pass-info").append("<li class='remove-iss-info list-info'>" + passTime + " UTC for a duration of " + pass['duration'] + " seconds, starting in the " + pass['startAzCompass'] + " and moving toward " + pass['endAzCompass'] + "</li>")
                     });
                 };
             });
