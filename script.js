@@ -2,8 +2,8 @@
 $(document).ready(function() {
     var config = {
         apiKey: "AIzaSyDkgxPmixwa3I9MTW-TuWkQZvBEqgbr1vE",
-        authDomain: "project-1-d5c4e.firebaseapp.com",
-        databaseURL: "https://project-1-d5c4e.firebaseio.com",
+        authDomain: "https://classwork-f3f0e.firebaseio.com/",
+        databaseURL: "https://classwork-f3f0e.firebaseio.com/",
         projectId: "project-1-d5c4e",
         storageBucket: "project-1-d5c4e.appspot.com",
         messagingSenderId: "987108784434"

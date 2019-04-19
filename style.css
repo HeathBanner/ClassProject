@@ -11,8 +11,8 @@ body {
 }
 
 .top { 
-    background: black;
-    padding: 20px;
+    background: white;
+    padding: 15px;
   }
 
 .clear-right {
@@ -25,6 +25,11 @@ body {
 
 .customNav {
     margin-left: 0px;
+}
+
+#navBar {
+    width: 100%;
+    margin-bottom: 40px;
 }
 
 ul {
@@ -48,12 +53,12 @@ ul {
 }
 
 a:link {
-    color: white;
+    color: black;
     font-weight: bold;
 }
 
 a:visited {
-    color: white;
+    color: black;
     font-weight: bold;
 }
 
@@ -66,6 +71,10 @@ a:hover {
 #loginDiv {
     text-align: right;
     margin: 0px;
+}
+
+#loginInput {
+    width: 150px;
 }
 
 header {
@@ -116,6 +125,7 @@ header {
     -o-background-size: cover;
     background-size: contain;
     margin-bottom: 20px;
+    
 }
 
 .clear-moon-body {
@@ -154,8 +164,6 @@ header {
 
 .apod-col {
     background: black;
-    /* border-top: 2px solid maroon;
-    border-bottom: 2px solid maroon; */
 }
 
 #apod-image {
@@ -186,7 +194,7 @@ header {
 #apodDescBtn {
     position: absolute;
     bottom: 2%;
-    left: 50%;
+    left: 46%;
 }
 
 .formStyle {
@@ -253,11 +261,11 @@ header {
     color:  #350e60;
 }
 
-hr {
+/* hr {
 color: white;
 border-width: thick;
 border: dotted;
-}
+} */
 
 #iss {
 position: absolute;
@@ -319,6 +327,7 @@ padding: 40px;
 
 .list-info {
     line-height: 2.0em;
+    font-size: 20px;
 }
 
 #moon-gif {
@@ -344,11 +353,41 @@ padding: 40px;
     padding: 20px;
 }
 
-@media screen and (max-width: 800px) {
+/* @media screen and (max-width: 800px) {
 .top {
     background: url("banner.png") no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
 }
+} */
+
+@media screen and (max-width: 576px) {
+    #loginDiv {
+        display: none;
+    }
+
+    .banner-bg {
+        display: none;
+    }
+
+    ul {
+        text-align: center;
+    }
+ }
+
+ @media screen and (max-width: 768px) {
+     #weather-target {
+         margin-top: 30px;
+     }
+
+     .holder {
+        margin-top: 30px;
+     }
+ }
+
+@media screen and (max-width: 992px) {
+   .banner-bg {
+        background: black;
+   } 
 }

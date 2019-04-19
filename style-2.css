@@ -1,7 +1,74 @@
 /* NOTE: this css is for the about/contact page only! */
+
+
+.colp {
+    padding: 0px;
+}
+
+.nav-top { 
+    background: white;
+    padding: 15px;
+  }
+
+.clear-right {
+    margin: 0px 0px 60px 0px;
+}
+
+.row {
+    margin: 0px;
+}
+
+.customNav {
+    margin-left: 0px;
+}
+
+#navBar {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+ul {
+    padding: 0px;
+    width: 100%;
+    margin: 0px 20px;
+}
+
+.navLi {
+    list-style: none;
+    display: inline-block;
+}
+
+.navLink {
+    padding: 8px;
+}
+
+#home-nav {
+    border-right: solid 0.5px white;
+    padding: 8px 10px
+}
+
+a:link {
+    color: black;
+    font-weight: bold;
+}
+
+a:visited {
+    color: black;
+    font-weight: bold;
+}
+
+a:hover {
+    color: indigo;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+
 .navName {
     color: #350e60;
 }
+
 
 .top { 
     background: url("banner.png") no-repeat center center; 
@@ -12,7 +79,7 @@
   }
 
 body {
-    padding: 30px;
+    padding: 0px;
     background-color: black;
     opacity: 1;
     color: #350e60;
@@ -33,6 +100,14 @@ body {
     width: 100%;
 }
 
+.office-padding {
+    padding: 30px;
+}
+
+.card-padding {
+    padding: 30px;
+}
+
 @media screen and (max-width: 800px) {
     .office-img {
         background: no-repeat center center;
@@ -42,3 +117,9 @@ body {
         width: 100%;
     }
 }
+
+@media screen and (max-width: 576px) {
+    ul {
+        text-align: center;
+    }
+ }
