@@ -430,7 +430,7 @@ $(document).ready($(document).on("click", "#search-location", function () {
             };
 
             $.getJSON('https://nominatim.openstreetmap.org/reverse?format=json&lat=' + latitude + '&lon=' + longitude, function (d) {
-                var passLocation = $("<h3 class'remove-iss-info'>").text("Over the next 10 days The International Space Station will be viewable from " + d.address.city + ", " + d.address.state + " at the following times:");
+                var passLocation = $("<h3 class='remove-iss-info'>").text("Over the next 10 days The International Space Station will be viewable from " + d.address.city + ", " + d.address.state + " at the following times:");
                 $("#pass-info").prepend(passLocation);
                 $("#pass-info").append("<br>")
             });
@@ -443,7 +443,7 @@ $(document).ready($(document).on("click", "#search-location", function () {
                     data['passes'].forEach(function (pass) {
                         var timeStamp = pass['startUTC'];
                         var passTime = moment.unix(timeStamp).format('dddd, MMMM Do YYYY, h:mm A');
-                        $("#pass-info").append("<li class'remove-iss-info list-info'>" + passTime + " UTC for a duration of " + pass['duration'] + " seconds, starting in the " + pass['startAzCompass'] + " and moving toward " + pass['endAzCompass'] + "</li>")
+                        $("#pass-info").append("<li class='remove-iss-info list-info'>" + passTime + " UTC for a duration of " + pass['duration'] + " seconds, starting in the " + pass['startAzCompass'] + " and moving toward " + pass['endAzCompass'] + "</li>")
                     });
                 };
             });
